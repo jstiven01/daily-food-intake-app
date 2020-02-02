@@ -5,13 +5,13 @@ class NutrientsController < ApplicationController
 
   # GET /nutrients
   def index
-    @nutrients = Nutrient.all
+    @nutrients = current_user.nutrients
     json_response(@nutrients)
   end
 
   # POST /nutrients
   def create
-    @nutrient = Nutrient.create!(nutrient_params)
+    @nutrient = current_user.nutrients.create!(nutrient_params)
     json_response(@nutrient, :created)
   end
 

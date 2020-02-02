@@ -4,13 +4,16 @@ require 'rails_helper'
 
 RSpec.describe 'nutrients API', type: :request do
   # initialize test data
-  let!(:nutrients) { create_list(:nutrient, 10) }
+  let(:user) { create(:user) }
+  let!(:nutrients) { create_list(:nutrient, 10, user_id: user.id) }
   let(:nutrient_id) { nutrients.first.id }
+  # authorize request
+  let(:headers) { valid_headers }
 
   # Test suite for GET /nutrients
   describe 'GET /nutrients' do
     # make HTTP get request before each example
-    before { get '/nutrients' }
+    before { get '/nutrients', params: {}, headers: headers }
 
     it 'returns nutrients' do
       # Note `json` is a custom helper to parse JSON responses
@@ -25,7 +28,7 @@ RSpec.describe 'nutrients API', type: :request do
 
   # Test suite for GET /nutrients/:id
   describe 'GET /nutrients/:id' do
-    before { get "/nutrients/#{nutrient_id}" }
+    before { get "/nutrients/#{nutrient_id}", params: {}, headers: headers }
 
     context 'when the record exists' do
       it 'returns the nutrient' do
@@ -56,11 +59,11 @@ RSpec.describe 'nutrients API', type: :request do
     # valid payload
     let(:valid_attributes) do
       { name: 'Protein', units: 'grams',
-        date_progress: Time.now }
+        date_progress: Time.now, user_id: user.id.to_s }.to_json
     end
 
     context 'when the request is valid' do
-      before { post '/nutrients', params: valid_attributes }
+      before { post '/nutrients', params: valid_attributes, headers: headers }
 
       it 'creates a nutrient' do
         expect(json['name']).to eq('Protein')
@@ -72,25 +75,26 @@ RSpec.describe 'nutrients API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/nutrients', params: { name: 'Protein', units: 'grams' } }
+      let(:invalid_attributes) { { name: nil }.to_json }
+      before { post '/nutrients', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Date progress can't be blank/)
+        expect(json['message'])
+          .to match(/Validation failed: Name can't be blank/)
       end
     end
   end
 
   # Test suite for PUT /nutrients/:id
   describe 'PUT /nutrients/:id' do
-    let(:valid_attributes) { { title: 'Shopping' } }
+    let(:valid_attributes) { { name: 'Fat' }.to_json }
 
     context 'when the record exists' do
-      before { put "/nutrients/#{nutrient_id}", params: valid_attributes }
+      before { put "/nutrients/#{nutrient_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -104,7 +108,7 @@ RSpec.describe 'nutrients API', type: :request do
 
   # Test suite for DELETE /nutrients/:id
   describe 'DELETE /nutrients/:id' do
-    before { delete "/nutrients/#{nutrient_id}" }
+    before { delete "/nutrients/#{nutrient_id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
