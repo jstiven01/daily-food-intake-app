@@ -4,14 +4,16 @@ require 'rails_helper'
 
 RSpec.describe 'Measurements API' do
   # Initialize the test data
-  let!(:nutrient) { create(:nutrient) }
+  let(:user) { create(:user) }
+  let!(:nutrient) { create(:nutrient, user_id: user.id) }
   let!(:measurements) { create_list(:measurement, 20, nutrient_id: nutrient.id) }
   let(:nutrient_id) { nutrient.id }
   let(:id) { measurements.first.id }
+  let(:headers) { valid_headers }
 
   # Test suite for GET /nutrients/:nutrient_id/measurements
   describe 'GET /nutrients/:nutrient_id/measurements' do
-    before { get "/nutrients/#{nutrient_id}/measurements" }
+    before { get "/nutrients/#{nutrient_id}/measurements", params: {}, headers: headers }
 
     context 'when nutrient exists' do
       it 'returns status code 200' do
@@ -38,7 +40,7 @@ RSpec.describe 'Measurements API' do
 
   # Test suite for GET /nutrients/:nutrient_id/measurements/:id
   describe 'GET /nutrients/:nutrient_id/measurements/:id' do
-    before { get "/nutrients/#{nutrient_id}/measurements/#{id}" }
+    before { get "/nutrients/#{nutrient_id}/measurements/#{id}", params: {}, headers: headers }
 
     context 'when nutrient measurement exists' do
       it 'returns status code 200' do
@@ -65,10 +67,12 @@ RSpec.describe 'Measurements API' do
 
   # Test suite for PUT /nutrients/:nutrient_id/measurements
   describe 'POST /nutrients/:nutrient_id/measurements' do
-    let(:valid_attributes) { { amount: 3000, date_intake: Time.now } }
+    let(:valid_attributes) { { amount: 3000, date_intake: Time.now }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/nutrients/#{nutrient_id}/measurements", params: valid_attributes }
+      before do
+        post "/nutrients/#{nutrient_id}/measurements", params: valid_attributes, headers: headers
+      end
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -76,7 +80,7 @@ RSpec.describe 'Measurements API' do
     end
 
     context 'when an invalid request' do
-      before { post "/nutrients/#{nutrient_id}/measurements", params: {} }
+      before { post "/nutrients/#{nutrient_id}/measurements", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -90,9 +94,11 @@ RSpec.describe 'Measurements API' do
 
   # Test suite for PUT /nutrients/:nutrient_id/measurements/:id
   describe 'PUT /nutrients/:nutrient_id/measurements/:id' do
-    let(:valid_attributes) { { amount: 2000 } }
+    let(:valid_attributes) { { amount: 2000 }.to_json }
 
-    before { put "/nutrients/#{nutrient_id}/measurements/#{id}", params: valid_attributes }
+    before do
+      put "/nutrients/#{nutrient_id}/measurements/#{id}", params: valid_attributes, headers: headers
+    end
 
     context 'when measurement exists' do
       it 'returns status code 204' do
@@ -120,7 +126,7 @@ RSpec.describe 'Measurements API' do
 
   # Test suite for DELETE /nutrients/:id
   describe 'DELETE /nutrients/:id' do
-    before { delete "/nutrients/#{nutrient_id}/measurements/#{id}" }
+    before { delete "/nutrients/#{nutrient_id}/measurements/#{id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
