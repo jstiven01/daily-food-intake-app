@@ -17,6 +17,8 @@ gem 'webpacker'
 gem 'faker', git: 'https://github.com/stympy/faker'
 # bcrypt
 gem 'bcrypt', '~> 3.1.7'
+# jwt to generate token
+gem 'jwt'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
