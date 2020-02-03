@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SignUp from './auth/SignUp';
+import Login from './auth/Login';
 
 class Home extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Home extends Component {
         {statusLogin}
 
         <SignUp handleSuccessfulAuth={this.handleSuccessfulAuth} />
+        <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
       </div>
     );
   }
