@@ -1,25 +1,33 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from '../redux/store';
+import { connect } from 'react-redux';
+import { checkingIsLogged } from '../redux/auth/actions';
 import Home from './Home';
 import Nutrients from './Nutrients';
 
 class App extends React.Component {
+  componentDidMount() {
+    const { checkingIsLogged } = this.props;
+    checkingIsLogged();
+  }
+
   render() {
     return (
-      <Provider store={store}>
-        <div className="container">
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/main" component={Nutrients} />
-            </Switch>
-          </BrowserRouter>
-        </div>
-      </Provider>
+      <div className="container">
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/main" component={Nutrients} />
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  checkingIsLogged: () => dispatch(checkingIsLogged()),
+});
+
+
+export default connect(null, mapDispatchToProps)(App);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const loginUser = userObj => ({
+const loginUserAction = userObj => ({
   type: 'LOGIN_USER',
   payload: userObj,
 });
@@ -16,8 +16,13 @@ const FailureAction = error => ({
   payload: error,
 });
 
+const isLoggedInAction = error => ({
+  type: 'IS_LOGGED_IN',
+  payload: error,
+});
 
-const userPostFetch = (history, {
+
+const userPostSignUp = (history, {
   name, email, password, passwordConfirmation,
 }) => dispatch => {
   console.log('action', history, name, email, password, passwordConfirmation);
@@ -46,6 +51,63 @@ const userPostFetch = (history, {
       dispatch(FailureAction(error));
     });
 };
+
+const userPostLogin = (history, {
+    email, password,
+  }) => dispatch => {
+    console.log('action Login', history, email, password);
+    axios
+      .post(
+        '/auth/login',
+        {
+          email,
+          password,
+        },
+        { withCredentials: true },
+      )
+      .then(response => {
+        console.log('ok fetch Login', response);
+        if (response.status === 200) {
+          dispatch(loginUserAction(response.data));
+          localStorage.setItem('token', response.data.auth_token);
+          history.push('/main');
+          console.log('enter')
+          // handleSuccessfulAuth(response.data);
+        }
+      })
+      .catch(error => {
+        console.log('registration error', error);
+        dispatch(FailureAction(error));
+      });
+  };
+
+  const checkingIsLogged = () => dispatch => {
+    const token = localStorage.token;
+    if (token){
+      axios
+      .get(
+        '/nutrients',
+        {
+          headers: {
+            Authorization: `Bearer ${ token }`
+          }
+        },
+        { withCredentials: true },
+      )
+      .then(response => {
+        console.log('ok check is log', response);
+        if (response.status === 200) {
+          dispatch(isLoggedInAction());
+          console.log('enter')
+        }
+      })
+      .catch(error => {
+        console.log('registration error', error);
+        localStorage.removeItem("token");
+      });
+    }
+      
+  };
 
 
 /*
@@ -158,4 +220,4 @@ const userPostFetch = (history, {
     type: 'LOGOUT_USER'
   }) */
 
-export default userPostFetch;
+export  {userPostSignUp, userPostLogin, checkingIsLogged};

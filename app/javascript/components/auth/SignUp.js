@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import userPostFetch from '../../redux/auth/actions';
+import { userPostSignUp } from '../../redux/auth/actions';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -29,8 +29,8 @@ class SignUp extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     // eslint-disable-next-line react/prop-types
-    const { userPostFetch, history } = this.props;
-    userPostFetch(history, this.state);
+    const { userPostSignUp, history } = this.props;
+    userPostSignUp(history, this.state);
   }
 
   render() {
@@ -84,11 +84,11 @@ class SignUp extends React.Component {
   }
 }
 SignUp.propTypes = {
-  userPostFetch: PropTypes.func.isRequired,
+  userPostSignUp: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  userPostFetch: (history, userInfo) => dispatch(userPostFetch(history, userInfo)),
+  userPostSignUp: (history, userInfo) => dispatch(userPostSignUp(history, userInfo)),
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(SignUp));
