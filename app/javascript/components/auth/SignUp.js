@@ -1,6 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import userPostFetch from '../../redux/auth/actions';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -25,31 +27,10 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(event) {
-    const {
-      name, email, password, passwordConfirmation,
-    } = this.state;
-    const { handleSuccessfulAuth } = this.props;
-
-    axios
-      .post(
-        '/signup',
-        {
-          name,
-          email,
-          password,
-          passwordConfirmation,
-        },
-        { withCredentials: true },
-      )
-      .then(response => {
-        if (response.status === 201) {
-          handleSuccessfulAuth(response.data);
-        }
-      })
-      .catch(error => {
-        console.log('registration error', error);
-      });
     event.preventDefault();
+    // eslint-disable-next-line react/prop-types
+    const { userPostFetch, history } = this.props;
+    userPostFetch(history, this.state);
   }
 
   render() {
@@ -103,8 +84,11 @@ class SignUp extends React.Component {
   }
 }
 SignUp.propTypes = {
-  handleSuccessfulAuth: PropTypes.func.isRequired,
+  userPostFetch: PropTypes.func.isRequired,
 };
 
+const mapDispatchToProps = dispatch => ({
+  userPostFetch: (history, userInfo) => dispatch(userPostFetch(history, userInfo)),
+});
 
-export default SignUp;
+export default withRouter(connect(null, mapDispatchToProps)(SignUp));

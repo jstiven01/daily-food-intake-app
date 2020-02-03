@@ -1,15 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Nutrients = ({ statusLogin }) => (
-  <div>
-    <h1>
-      NUTRIENTS:
-      {statusLogin}
-    </h1>
-  </div>
-);
-Nutrients.propTypes = {
-  statusLogin: PropTypes.string.isRequired,
+const Nutrients = ({ userData }) => {
+  console.log('userData', userData);
+
+  return (
+    <div>
+      <h1>NUTRIENTS:    </h1>
+    </div>
+  );
 };
-export default Nutrients;
+
+const mapStateToProps = state => ({
+  userData: state,
+});
+
+export default connect(mapStateToProps)(Nutrients);

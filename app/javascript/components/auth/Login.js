@@ -24,7 +24,7 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     const {
-       email, password
+      email, password,
     } = this.state;
     const { handleSuccessfulAuth } = this.props;
 
