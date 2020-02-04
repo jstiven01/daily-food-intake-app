@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { checkingIsLogged } from '../redux/auth/actions';
 import Home from './Home';
 import Nutrients from './Nutrients';
+import Measurements from './Measurements';
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/main" component={Nutrients} />
+          <Route exact path="/nutrient/:id/measurements" component={Measurements} />
         </Switch>
       </div>
     );

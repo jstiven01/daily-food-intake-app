@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getNutrients } from '../redux/nutrients/actions';
 
@@ -10,13 +11,15 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
 
   const jsxNutrients = nutrientsData.map(nutrient => (
     <div key={nutrient.id}>
-      <p>
-        name :
-        {nutrient.name}
-      </p>
+      <Link to={`/nutrient/${nutrient.id}/measurements`}>
+        <p>
+          name :
+          {nutrient.name}
+        </p>
+      </Link>
       <p>
         total:
-        {nutrient.total}
+        {nutrient.total_nutrient}
       </p>
       <p>
         units :
@@ -30,20 +33,23 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   return (
     <div>
       <h1>NUTRIENTS</h1>
+
       {jsxNutrients}
     </div>
   );
 };
 
 Nutrients.propTypes = {
-  nutrientsData: PropTypes.arrayOf.isRequired,
+  nutrientsData: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    units: PropTypes.string,
+  })).isRequired,
   getNutrients: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   nutrientsData: state.nutrients.nutrients,
 });
-
 
 const mapDispatchToProps = dispatch => ({
   getNutrients: () => dispatch(getNutrients()),
