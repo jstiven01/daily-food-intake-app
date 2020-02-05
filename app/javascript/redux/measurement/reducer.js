@@ -1,34 +1,34 @@
 
 const initialState = {
   loading: false,
-  measurements: [],
+  measurement: {},
   error: '',
 };
 
-const measurementsReducer = (state = initialState, action) => {
+const measurementReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'MEASUREMENTS_REQUEST':
+    case 'MEASUREMENT_REQUEST':
       return {
         ...state,
         loading: true,
       };
-    case 'GET_MEASUREMENTS_SUCCESS':
+    case 'GET_MEASUREMENT_SUCCESS':
       return {
         loading: false,
-        measurements: action.payload,
+        measurement: action.payload,
         error: '',
       };
-    case 'FAILURE_MEASUREMENTS_REQUEST':
+    case 'FAILURE_MEASUREMENT_REQUEST':
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
 
-    case 'POST_MEASUREMENTS_SUCCESS':
+    case 'POST_MEASUREMENT_SUCCESS':
       return {
         loading: false,
-        measurements: [...state.measurements, action.payload],
+        measurement: action.payload,
         error: '',
       };
 
@@ -36,4 +36,4 @@ const measurementsReducer = (state = initialState, action) => {
   }
 };
 
-export default measurementsReducer;
+export default measurementReducer;

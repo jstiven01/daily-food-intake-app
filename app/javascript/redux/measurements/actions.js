@@ -9,18 +9,15 @@ export const getMeasurementsSuccess = measurements => ({
   payload: measurements,
 });
 
-export const getMeasurementsFailure = error => ({
-  type: 'GET_MEASUREMENTS_FAILURE',
-  payload: error,
-});
 
 export const postMeasurementsSuccess = measurements => ({
   type: 'POST_MEASUREMENTS_SUCCESS',
   payload: measurements,
 });
 
-export const postMeasurementsFailure = error => ({
-  type: 'POST_MEASUREMENTS_FAILURE',
+
+export const failureMeasurementRequest = error => ({
+  type: 'FAILURE_MEASUREMENTS_REQUEST',
   payload: error,
 });
 
@@ -49,7 +46,7 @@ export const postMeasurement = ({ name, units, dateProgress }) => dispatch => {
     })
     .catch(error => {
       // error.message is the error message
-      dispatch(postMeasurementsFailure(error.message));
+      dispatch(failureMeasurementRequest(error.message));
     });
 };
 
@@ -72,6 +69,6 @@ export const getMeasurements = id => dispatch => {
     })
     .catch(error => {
       // error.message is the error message
-      dispatch(getMeasurementsFailure(error.message));
+      dispatch(failureMeasurementRequest(error.message));
     });
 };
