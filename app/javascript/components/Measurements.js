@@ -32,6 +32,9 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
   return (
     <div>
       <h1>Measurements</h1>
+      <Link to={`/nutrient/${id}/new/measurement`}>
+        New Measurement
+      </Link>
       {jsxMeasurements}
     </div>
 

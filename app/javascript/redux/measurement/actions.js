@@ -10,18 +10,20 @@ export const getMeasurementSuccess = measurements => ({
 });
 
 
-export const postMeasurementSuccess = measurements => ({
+export const postMeasurementSuccess = message => ({
   type: 'POST_MEASUREMENT_SUCCESS',
-  payload: measurements,
+  payload: message,
 });
 
 
-export const editMeasurementSuccess = () => ({
+export const editMeasurementSuccess = message => ({
   type: 'EDIT_MEASUREMENT_SUCCESS',
+  payload: message,
 });
 
-export const deleteMeasurementSuccess = () => ({
+export const deleteMeasurementSuccess = message => ({
   type: 'DELETE_MEASUREMENT_SUCCESS',
+  payload: message,
 });
 
 export const failureMeasurementRequest = error => ({
@@ -43,17 +45,15 @@ export const getMeasurement = (nutrientId, measurementId) => dispatch => {
       { withCredentials: true },
     )
     .then(response => {
-      console.log('GET: ', response);
       const measurement = response.data;
       dispatch(getMeasurementSuccess(measurement));
     })
     .catch(error => {
-      // error.message is the error message
       dispatch(failureMeasurementRequest(error.message));
     });
 };
 
-export const postMeasurement = (nutrientId, { amount, dateIntake }) => dispatch => {
+export const postMeasurement = (nutrientId, { amount, dateIntake }, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -72,12 +72,12 @@ export const postMeasurement = (nutrientId, { amount, dateIntake }) => dispatch 
       { withCredentials: true },
     )
     .then(response => {
-      console.log('POST: ', response);
-      const measurement = response.data;
-      dispatch(postMeasurementSuccess(measurement));
+      if (response.status === 201) {
+        dispatch(postMeasurementSuccess('Measurement was created!!'));
+        history.push(`/nutrient/${nutrientId}/measurements`);
+      }
     })
     .catch(error => {
-      // error.message is the error message
       dispatch(failureMeasurementRequest(error.message));
     });
 };
@@ -100,11 +100,10 @@ export const editMeasurement = (nutrientId, measurementId, amount) => dispatch =
     )
     .then(response => {
       if (response.status === 204) {
-        dispatch(editMeasurementSuccess());
+        dispatch(editMeasurementSuccess('Measurement was edited !!'));
       }
     })
     .catch(error => {
-    // error.message is the error message
       dispatch(failureMeasurementRequest(error.message));
     });
 };
@@ -124,12 +123,11 @@ export const deleteMeasurement = (nutrientId, measurementId, history) => dispatc
     )
     .then(response => {
       if (response.status === 204) {
-        dispatch(deleteMeasurementSuccess());
+        dispatch(deleteMeasurementSuccess('Measurement was deleted!!'));
         history.push(`/nutrient/${nutrientId}/measurements`);
       }
     })
     .catch(error => {
-    // error.message is the error message
       dispatch(failureMeasurementRequest(error.message));
     });
 };

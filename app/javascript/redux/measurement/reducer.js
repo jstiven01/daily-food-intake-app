@@ -3,6 +3,7 @@ const initialState = {
   loading: false,
   measurement: {},
   error: '',
+  message: '',
 };
 
 const measurementReducer = (state = initialState, action) => {
@@ -26,11 +27,15 @@ const measurementReducer = (state = initialState, action) => {
       };
 
     case 'POST_MEASUREMENT_SUCCESS':
+    case 'EDIT_MEASUREMENT_SUCCESS':
+    case 'DELETE_MEASUREMENT_SUCCESS':
+
       return {
+        ...state,
         loading: false,
-        measurement: action.payload,
-        error: '',
+        message: action.payload,
       };
+
 
     default: return state;
   }

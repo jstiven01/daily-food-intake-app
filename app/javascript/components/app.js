@@ -7,6 +7,7 @@ import Home from './Home';
 import Nutrients from './Nutrients';
 import Measurements from './Measurements';
 import Measurement from './Measurement';
+import NewMeasurement from './NewMeasurement';
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/main" component={Nutrients} />
           <Route exact path="/nutrient/:id/measurements" component={Measurements} />
+          <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
           <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
         </Switch>
       </div>
