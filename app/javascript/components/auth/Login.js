@@ -37,28 +37,33 @@ class Login extends React.Component {
       email, password,
     } = this.state;
     return (
-      <div>
+      <div className="col-12 mt-4">
+        <h3>Login</h3>
         <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={this.handleChange}
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={this.handleChange}
+              className="form-control"
+              required
+            />
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={this.handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={this.handleChange}
-            required
-          />
-
-          <button type="submit">Login</button>
+          <button type="submit" className="btn btn-primary">Login</button>
         </form>
       </div>
     );
