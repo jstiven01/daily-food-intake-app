@@ -37,9 +37,8 @@ class Login extends React.Component {
       email, password,
     } = this.state;
     return (
-      <div className="col-12 mt-4">
-        <h3>Login</h3>
-        <form onSubmit={this.handleSubmit}>
+      <div>
+        <form onSubmit={this.handleSubmit} className="col-12 forms" >
           <div className="form-group">
             <input
               type="email"
@@ -47,7 +46,7 @@ class Login extends React.Component {
               placeholder="Email"
               value={email}
               onChange={this.handleChange}
-              className="form-control"
+              className="form-control input-font-size"
               required
             />
           </div>
@@ -58,12 +57,12 @@ class Login extends React.Component {
               placeholder="Password"
               value={password}
               onChange={this.handleChange}
-              className="form-control"
+              className="form-control input-font-size"
               required
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">Login</button>
+          <button type="submit" className="btn btn-primary input-font-size">Login</button>
         </form>
       </div>
     );
