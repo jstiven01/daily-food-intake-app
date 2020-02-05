@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { checkingIsLogged } from '../redux/auth/actions';
+import { checkingIsLogged, logOutUser } from '../redux/auth/actions';
 import Home from './Home';
 import Nutrients from './Nutrients';
 import Measurements from './Measurements';
@@ -16,7 +16,18 @@ class App extends React.Component {
     checkingIsLogged(history);
   }
 
+  handleClick(event) {
+    event.preventDefault();
+    localStorage.removeItem('token');
+    // eslint-disable-next-line react/prop-types
+    const { logOutUser, history } = this.props;
+    logOutUser();
+    // eslint-disable-next-line react/prop-types
+    history.push('/');
+  }
+
   render() {
+    const { currentUserIsLogged } = this.props;
     return (
       <div>
         <Switch>
@@ -26,18 +37,27 @@ class App extends React.Component {
           <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
           <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
         </Switch>
+        {currentUserIsLogged
+          ? <button type="button" onClick={this.handleClick.bind(this)}>Log Out</button>
+          : null}
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  currentUserIsLogged: state.currentUser.isLogged,
+});
 const mapDispatchToProps = dispatch => ({
   checkingIsLogged: history => dispatch(checkingIsLogged(history)),
+  logOutUser: () => dispatch(logOutUser()),
 });
 
 App.propTypes = {
   checkingIsLogged: PropTypes.func.isRequired,
+  logOutUser: PropTypes.func.isRequired,
+  currentUserIsLogged: PropTypes.bool.isRequired,
 };
 
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -21,6 +21,9 @@ const isLoggedInAction = error => ({
   payload: error,
 });
 
+const logOutUser = () => ({
+  type: 'LOGOUT_USER',
+});
 
 const userPostSignUp = (history, {
   name, email, password, passwordConfirmation,
@@ -106,4 +109,6 @@ const checkingIsLogged = history => dispatch => {
 };
 
 
-export { userPostSignUp, userPostLogin, checkingIsLogged };
+export {
+  userPostSignUp, userPostLogin, checkingIsLogged, logOutUser,
+};
