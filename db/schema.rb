@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_172724) do
+ActiveRecord::Schema.define(version: 2020_02_06_122403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2020_02_02_172724) do
     t.index ["user_id"], name: "index_nutrients_on_user_id"
   end
 
+  create_table "progresses", force: :cascade do |t|
+    t.datetime "date_progress"
+    t.float "total_date"
+    t.string "units"
+    t.bigint "nutrient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nutrient_id"], name: "index_progresses_on_nutrient_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -45,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_02_02_172724) do
 
   add_foreign_key "measurements", "nutrients"
   add_foreign_key "nutrients", "users"
+  add_foreign_key "progresses", "nutrients"
 end

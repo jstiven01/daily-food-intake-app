@@ -6,4 +6,5 @@ class Nutrient < ApplicationRecord
 
   # Associations
   has_many :measurements, dependent: :destroy
+  has_many :progresses, dependent: :destroy
 end

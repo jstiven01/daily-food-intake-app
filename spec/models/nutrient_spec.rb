@@ -7,6 +7,7 @@ RSpec.describe Nutrient, type: :model do
   # Association test
 
   it { should have_many(:measurements).dependent(:destroy) }
+  it { should have_many(:progresses).dependent(:destroy) }
   # Validation tests
 
   it { should validate_presence_of(:name) }
