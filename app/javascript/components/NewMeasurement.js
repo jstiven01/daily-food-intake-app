@@ -24,7 +24,7 @@ const Measurement = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    postMeasurement(id, { amount: form.amount, dateIntake: new Date() }, history);
+    postMeasurement(id, form.amount, history);
   };
 
 

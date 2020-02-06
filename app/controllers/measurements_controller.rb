@@ -16,7 +16,10 @@ class MeasurementsController < ApplicationController
 
   # POST /nutrients/:nutrient_id/measurements
   def create
-    @nutrient.measurements.create!(measurement_params)
+    new_measurement = @nutrient.measurements.new(measurement_params)
+    new_measurement.date_intake = DateTime.now
+    new_measurement.save
+
     json_response(@nutrient, :created)
   end
 

@@ -69,6 +69,7 @@ export const getNutrients = () => dispatch => {
     .then(response => {
       const nutrients = response.data;
       if (nutrients.length === 0) {
+        dispatch(getNutrientsSuccess(nutrients));
         const protein = {
           name: 'Protein', units: 'grams', dateProgress: new Date(), total_nutrient: 0,
         };

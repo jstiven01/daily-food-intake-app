@@ -53,7 +53,7 @@ export const getMeasurement = (nutrientId, measurementId) => dispatch => {
     });
 };
 
-export const postMeasurement = (nutrientId, { amount, dateIntake }, history) => dispatch => {
+export const postMeasurement = (nutrientId, amount, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -61,7 +61,7 @@ export const postMeasurement = (nutrientId, { amount, dateIntake }, history) => 
       `/nutrients/${nutrientId}/measurements`,
       {
         amount,
-        date_intake: dateIntake,
+        date_intake: '',
 
       },
       {
