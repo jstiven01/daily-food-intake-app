@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
 
+
 .container-home {
     height: 100%;
+}
+.container-app {
+    height: 92%;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -11,16 +15,21 @@ h1 {
     font-size: 90px !important;
 }
 
+h2 {
+    font-size: 25px !important;
+}
+
 .color-text {
     color:#E8FCFF;
 }
 .nav-top {
-    background-color: #62b5e5;
+    background-color: #42B5E8;
     color:#E8FCFF;
     text-align: center;
     font-weight: bold;
     height: 10%;
 }
+
 .buttons-home {
     background-color: transparent;
     border: 0;
@@ -46,5 +55,36 @@ h1 {
 }
 
 .main-bk-color{
-    background-color: #62b5e5;
+    background-color: #42B5E8;
+}
+
+
+.top-title {
+    font-size: 50px !important;
+    padding-top: 84px;
+}
+
+.dark-panel{
+    height: 8%;
+}
+
+.nav-top-app {
+    height: 12%;
+}
+
+.section-statistics {
+    height: 34%;
+}
+
+.nutrients-global {
+    height: 54%;
+    background-color: #F1F2F4;
+    padding-top: 10px;
+}
+
+.nutrient {
+    height: 21%;
+    background-color: white;
+    font-size: 30px !important;
+    margin: 36px 36px;
 }

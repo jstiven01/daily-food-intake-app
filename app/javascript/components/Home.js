@@ -13,8 +13,8 @@ const Home = () => {
     }
   };
   return (
-    <div className="container-fluid container-home main-bk-color">
-      <div className="row container-home">
+    <div className="container-fluid main-bk-color">
+      <div className="row">
         <div className="col-12 nav-top align-self-end">
           <h1>Daily Food Intake</h1>
         </div>

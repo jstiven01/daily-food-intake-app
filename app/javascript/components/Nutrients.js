@@ -10,7 +10,7 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   }, []);
 
   const jsxNutrients = nutrientsData.map(nutrient => (
-    <div key={nutrient.id}>
+    <div key={nutrient.id} className="nutrient">
       <Link to={`/nutrient/${nutrient.id}/measurements`}>
         <p>
           name :
@@ -31,11 +31,19 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
 
 
   return (
-    <div>
-      <h1>NUTRIENTS</h1>
 
-      {jsxNutrients}
+    <div className="col-12 p-0">
+      <div className="col-12 main-bk-color color-text nav-top-app text-center">
+        <h2 className="top-title">Daily Food Intake</h2>
+      </div>
+      <div className="col-12 section-statistics">
+        statistics
+      </div>
+      <div className="col-12 nutrients-global">
+        {jsxNutrients}
+      </div>
     </div>
+
   );
 };
 

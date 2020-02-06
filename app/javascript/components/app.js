@@ -28,17 +28,25 @@ class App extends React.Component {
 
   render() {
     const { currentUserIsLogged } = this.props;
+    let classCss = '';
+    if (currentUserIsLogged) {
+      classCss = 'container-app';
+    } else {
+      classCss = 'container-home';
+    }
     return (
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/main" component={Nutrients} />
-          <Route exact path="/nutrient/:id/measurements" component={Measurements} />
-          <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
-          <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
-        </Switch>
+      <div className="container-fluid">
+        <div className={`row ${classCss}`}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/main" component={Nutrients} />
+            <Route exact path="/nutrient/:id/measurements" component={Measurements} />
+            <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
+            <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
+          </Switch>
+        </div>
         {currentUserIsLogged
-          ? <button type="button" onClick={this.handleClick.bind(this)}>Log Out</button>
+          ? <div className="col-12 p-0 dark-panel"><button type="button" onClick={this.handleClick.bind(this)}>Log Out</button></div>
           : null}
       </div>
     );
