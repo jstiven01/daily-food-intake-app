@@ -36,7 +36,7 @@ class NutrientsController < ApplicationController
 
   def nutrient_params
     # whitelist params
-    params.permit(:name, :units, :date_progress)
+    params.permit(:name, :units, :date_progress, :total_nutrient)
   end
 
   def set_nutrient

@@ -8,6 +8,10 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   useEffect(() => {
     getNutrients();
   }, []);
+  // console.log('nutrie', nutrientsData);
+
+  // console.log('isToday  :', isToday);
+
 
   const jsxNutrients = nutrientsData.map(nutrient => (
     <div key={nutrient.id} className="nutrient">
@@ -19,7 +23,8 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
       </Link>
       <p>
         total:
-        {nutrient.total_nutrient}
+        { nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10)
+          ? nutrient.total_nutrient : 0}
       </p>
       <p>
         units :

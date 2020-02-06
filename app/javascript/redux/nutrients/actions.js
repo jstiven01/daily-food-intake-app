@@ -24,7 +24,9 @@ export const postNutrientsFailure = error => ({
   payload: error,
 });
 
-export const postNutrient = ({ name, units, dateProgress }) => dispatch => {
+export const postNutrient = ({
+  name, units, dateProgress, totalNutrient,
+}) => dispatch => {
   const { token } = localStorage;
   dispatch(nutrientsRequest());
   axios
@@ -34,6 +36,7 @@ export const postNutrient = ({ name, units, dateProgress }) => dispatch => {
         name,
         units,
         date_progress: dateProgress,
+        total_nutrient: totalNutrient,
 
       },
       {
@@ -71,13 +74,13 @@ export const getNutrients = () => dispatch => {
       if (nutrients.length === 0) {
         dispatch(getNutrientsSuccess(nutrients));
         const protein = {
-          name: 'Protein', units: 'grams', dateProgress: new Date(), total_nutrient: 0,
+          name: 'Protein', units: 'grams', dateProgress: new Date(), totalNutrient: 0,
         };
         const carbs = {
-          name: 'Carbs', units: 'grams', dateProgress: new Date(), total_nutrient: 0,
+          name: 'Carbs', units: 'grams', dateProgress: new Date(), totalNutrient: 0,
         };
         const fat = {
-          name: 'Fat', units: 'grams', dateProgress: new Date(), total_nutrient: 0,
+          name: 'Fat', units: 'grams', dateProgress: new Date(), totalNutrient: 0,
         };
         dispatch(postNutrient(protein));
         dispatch(postNutrient(carbs));
