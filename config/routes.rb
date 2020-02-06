@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :nutrients do
     resources :measurements
   end
+  resources :progresses
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
   get '*path', to: 'homepage#index'

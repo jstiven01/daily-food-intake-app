@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import {
+  Switch, Route, withRouter, Link,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { checkingIsLogged, logOutUser } from '../redux/auth/actions';
@@ -8,6 +10,7 @@ import Nutrients from './Nutrients';
 import Measurements from './Measurements';
 import Measurement from './Measurement';
 import NewMeasurement from './NewMeasurement';
+import Progresses from './Progresses';
 
 class App extends React.Component {
   componentDidMount() {
@@ -43,10 +46,21 @@ class App extends React.Component {
             <Route exact path="/nutrient/:id/measurements" component={Measurements} />
             <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
             <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
+            <Route exact path="/myProgress" component={Progresses} />
           </Switch>
         </div>
         {currentUserIsLogged
-          ? <div className="col-12 p-0 dark-panel"><button type="button" onClick={this.handleClick.bind(this)}>Log Out</button></div>
+          ? (
+            <div className="col-12 p-0 dark-panel">
+              <button type="button" onClick={this.handleClick.bind(this)}>Log Out</button>
+              <Link to="/myProgress">
+                <p>
+                  progresses
+                </p>
+              </Link>
+
+            </div>
+          )
           : null}
       </div>
     );
