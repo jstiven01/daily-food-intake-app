@@ -96,3 +96,22 @@ h2 {
 .progress-section {
     width: 66%;
 }
+
+.date-main {
+   height: 23%;
+}
+
+.main-size-date {
+    font-size: 40px;
+    color: #5B8092;
+}
+
+.circle-progress {
+    width: 76% !important;
+}
+
+.span-name-statistics {
+    font-size: 20px;
+    color: 	#8395A5;
+    font-size: 36px;
+}
