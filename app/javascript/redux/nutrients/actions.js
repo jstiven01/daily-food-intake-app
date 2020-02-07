@@ -83,8 +83,8 @@ export const getNutrients = () => dispatch => {
           name: 'Fat', units: 'grams', dateProgress: new Date(), totalNutrient: 0,
         };
         dispatch(postNutrient(protein));
-        dispatch(postNutrient(carbs));
         dispatch(postNutrient(fat));
+        dispatch(postNutrient(carbs));
       } else {
         dispatch(getNutrientsSuccess(nutrients));
       }

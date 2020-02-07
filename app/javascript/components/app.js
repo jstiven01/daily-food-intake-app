@@ -53,7 +53,7 @@ class App extends React.Component {
           ? (
             <div className="col-12 p-0 dark-panel d-flex justify-content-around">
               <div className="add-measure align-self-center">
-              <Link to="/main">
+                <Link to="/main">
                   <p>
                     Add Measure
                   </p>

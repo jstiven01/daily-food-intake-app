@@ -14,22 +14,26 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   const jsxNutrients = nutrientsData.map(nutrient => (
     <div key={nutrient.id} className="nutrient">
       <Link to={`/nutrient/${nutrient.id}/measurements`}>
-      <div className="d-flex">
-        <div className={`${nutrient.name}-img`} />
-        <div  className="description">
-          <p><strong>{nutrient.name}</strong></p>
-          <p>
-            total:
-            { nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10)
-              ? nutrient.total_nutrient : 0} <span> </span>
+        <div className="d-flex">
+          <div className="align-self-center">
+          <div className={`${nutrient.name}-img`} />
+          </div>
+          
+          <div className="description">
+            <p><strong>{nutrient.name}</strong></p>
+            <p>
+              total:
+              { nutrient.date_progress.substring(0, 10)
+              === new Date().toISOString().substring(0, 10)
+                ? nutrient.total_nutrient : 0}
+              {' '}
+              <span> </span>
               {nutrient.units}
-          </p>
-
-            
+            </p>
 
 
+          </div>
         </div>
-      </div>
 
 
       </Link>
