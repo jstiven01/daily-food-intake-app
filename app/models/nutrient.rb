@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Nutrient < ApplicationRecord
-  default_scope -> { order(created_at: :asc) }
+  default_scope -> { order(name: :desc) }
   # validations
   validates_presence_of :name, :units, :date_progress
 

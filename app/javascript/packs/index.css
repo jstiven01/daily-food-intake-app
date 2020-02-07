@@ -6,6 +6,7 @@
 }
 .container-app {
     height: 92%;
+    background-color: white;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -65,6 +66,7 @@ h2 {
 }
 
 .dark-panel{
+    background-color: 	#2F3B47;
     height: 8%;
 }
 
@@ -114,4 +116,55 @@ h2 {
     font-size: 20px;
     color: 	#8395A5;
     font-size: 36px;
+}
+
+.Protein-img {
+    background-image: url('./img/protein.png');
+    background-repeat: no-repeat;
+    width: 190px;
+    height: 160px;
+    margin: 5px;
+}
+
+
+.Fat-img {
+    background-image: url('./img/fats.png');
+    width: 190px;
+    height: 160px;
+    background-repeat: no-repeat;
+    margin: 5px;
+}
+
+.Carbs-img {
+    background-image: url('./img/carbs.png');
+    width: 190px;
+    height: 160px;
+    background-repeat: no-repeat;
+    margin: 5px;
+}
+
+.description {
+    color: 	#8395A5;
+    font-size: 36px;
+    margin-left: 20px;
+}
+
+.main-container{
+    background-color: 	#2F3B47;
+    overflow: hidden;
+    
+}
+
+.main-container a {    
+    color: white;    
+    font-size: 40px;
+
+}
+
+.button-logout{
+    background-color: transparent;
+    border: 0;
+    color: white; 
+    font-size: 40px;
+    margin-bottom: 14px;
 }

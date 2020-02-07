@@ -38,7 +38,7 @@ class App extends React.Component {
       classCss = 'container-home';
     }
     return (
-      <div className="container-fluid">
+      <div className="container-fluid p-0 main-container">
         <div className={`row ${classCss}`}>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -51,14 +51,24 @@ class App extends React.Component {
         </div>
         {currentUserIsLogged
           ? (
-            <div className="col-12 p-0 dark-panel">
-              <button type="button" onClick={this.handleClick.bind(this)}>Log Out</button>
-              <Link to="/myProgress">
-                <p>
-                  progresses
-                </p>
-              </Link>
-
+            <div className="col-12 p-0 dark-panel d-flex justify-content-around">
+              <div className="add-measure align-self-center">
+              <Link to="/main">
+                  <p>
+                    Add Measure
+                  </p>
+                </Link>
+              </div>
+              <div className="add-measure align-self-center">
+                <Link to="/myProgress">
+                  <p>
+                    My Progress
+                  </p>
+                </Link>
+              </div>
+              <div className="add-measure align-self-center">
+                <button type="button" onClick={this.handleClick.bind(this)} className="button-logout">Log Out</button>
+              </div>
             </div>
           )
           : null}

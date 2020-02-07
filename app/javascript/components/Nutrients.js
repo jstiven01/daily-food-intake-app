@@ -11,24 +11,28 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
     getNutrients();
   }, []);
 
-
   const jsxNutrients = nutrientsData.map(nutrient => (
     <div key={nutrient.id} className="nutrient">
       <Link to={`/nutrient/${nutrient.id}/measurements`}>
-        <p>
-          name :
-          {nutrient.name}
-        </p>
+      <div className="d-flex">
+        <div className={`${nutrient.name}-img`} />
+        <div  className="description">
+          <p><strong>{nutrient.name}</strong></p>
+          <p>
+            total:
+            { nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10)
+              ? nutrient.total_nutrient : 0} <span> </span>
+              {nutrient.units}
+          </p>
+
+            
+
+
+        </div>
+      </div>
+
+
       </Link>
-      <p>
-        total:
-        { nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10)
-          ? nutrient.total_nutrient : 0}
-      </p>
-      <p>
-        units :
-        {nutrient.units}
-      </p>
 
     </div>
   ));
@@ -99,19 +103,6 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
           <div className="d-flex flex-column text-center">
             <CircularProgressbar
               className="circle-progress align-self-center"
-              value={percentageCarbs}
-              text={`${percentageCarbs}%`}
-              styles={buildStyles({
-                textColor: '#8395A5',
-                pathColor: '#ADDC91',
-                trailColor: '#E8FCFF',
-              })}
-            />
-            <span className="span-name-statistics">Carbs</span>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <CircularProgressbar
-              className="circle-progress align-self-center"
               value={percentageFat}
               text={`${percentageFat}%`}
               styles={buildStyles({
@@ -122,6 +113,20 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
             />
             <span className="span-name-statistics">Fat</span>
           </div>
+          <div className="d-flex flex-column text-center">
+            <CircularProgressbar
+              className="circle-progress align-self-center"
+              value={percentageCarbs}
+              text={`${percentageCarbs}%`}
+              styles={buildStyles({
+                textColor: '#8395A5',
+                pathColor: '#ADDC91',
+                trailColor: '#E8FCFF',
+              })}
+            />
+            <span className="span-name-statistics">Carbs</span>
+          </div>
+
         </div>
 
       </div>
