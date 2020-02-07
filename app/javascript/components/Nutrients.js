@@ -8,10 +8,6 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   useEffect(() => {
     getNutrients();
   }, []);
-  // console.log('nutrie', nutrientsData);
-
-  // console.log('isToday  :', isToday);
-
 
   const jsxNutrients = nutrientsData.map(nutrient => (
     <div key={nutrient.id} className="nutrient">
@@ -39,7 +35,7 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
 
     <div className="col-12 p-0">
       <div className="col-12 main-bk-color color-text nav-top-app text-center">
-        <h2 className="top-title">Daily Food Intake</h2>
+        <h2 className="top-title">My Nutrients</h2>
       </div>
       <div className="col-12 section-statistics">
         statistics

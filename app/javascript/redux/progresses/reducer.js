@@ -1,7 +1,7 @@
 
 const initialState = {
   loading: false,
-  progresses: {},
+  progresses: [{ name: '', datasets: [], labels: [] }],
   error: '',
 };
 

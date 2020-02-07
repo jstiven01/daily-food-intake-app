@@ -88,3 +88,11 @@ h2 {
     font-size: 30px !important;
     margin: 36px 36px;
 }
+
+.progresses-section {
+    width: 88%;
+}
+
+.progress-section {
+    width: 33%;
+}

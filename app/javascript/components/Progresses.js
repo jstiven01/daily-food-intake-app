@@ -2,31 +2,35 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProgresses } from '../redux/progresses/actions';
+import Chart from './Chart';
 
 const Progresses = ({ progressesData, getProgresses }) => {
   useEffect(() => {
     getProgresses();
   }, []);
-  // let a  = progressesData.filter(prog => prog.keys('Protein'))
-  // let { Protein } = progressesData[0];
-  console.log('Progresses', progressesData.Protein);
 
-  // console.log('isToday  :', isToday);
+  const jsxProgressNutrients = progressesData.map(prg => (
+    <div key={prg.name} className="col-12 progress-section">
+      <h4>{prg.name}</h4>
+      <Chart data={prg} />
+    </div>
+  ));
 
 
   return (
-    <div>
-      Progresses
+
+    <div className="col-12 p-0">
+      <div className="col-12 main-bk-color color-text nav-top-app text-center">
+        <h2 className="top-title">My Progress</h2>
+      </div>
+      {jsxProgressNutrients}
+
     </div>
-
-
   );
 };
-
 Progresses.propTypes = {
   progressesData: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
-    units: PropTypes.string,
   })).isRequired,
   getProgresses: PropTypes.func.isRequired,
 };
