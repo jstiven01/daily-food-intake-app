@@ -6579,12 +6579,20 @@ react-chartjs-2@^2.9.0:
     lodash "^4.17.4"
     prop-types "^15.5.8"
 
+react-circle-slider@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-circle-slider/-/react-circle-slider-1.6.2.tgz#7af7465eb26bb74e26c2b80d1c644f2dc3f613d9"
+  integrity sha512-tupv00A4Tr6g+rAWepYPwrg8DjS1yf9+BzB1Bq3ARJYccabMI/pWXtYAQsigt8Br3uXSCCRA59qgBjEzZB7vfA==
+  dependencies:
+    react "^16.7.0"
+    react-dom "^16.0.0"
+
 react-circular-progressbar@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-2.0.3.tgz#fa8eb59f8db168d2904bae4590641792c80f5991"
   integrity sha512-YKN+xAShXA3gYihevbQZbavfiJxo83Dt1cUxqg/cltj4VVsRQpDr7Fg1mvjDG3x1KHGtd9NmYKvJ2mMrPwbKyw==
 
-react-dom@^16.12.0:
+react-dom@^16.0.0, react-dom@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
@@ -6640,7 +6648,7 @@ react-router@5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react@^16.12.0:
+react@^16.12.0, react@^16.7.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { CircleSlider } from 'react-circle-slider';
 import { postMeasurement } from '../redux/measurement/actions';
 
 const Measurement = ({
@@ -15,10 +16,11 @@ const Measurement = ({
     amount: 0.0,
   });
 
-  const handleChange = event => {
+
+  const handleChange = value => {
     setState({
       ...form,
-      [event.target.name]: event.target.value,
+      amount: value.toFixed(2),
     });
   };
 
@@ -29,28 +31,38 @@ const Measurement = ({
 
 
   return (
-    <div>
-      <h1>Measurement</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <div>
-            New Amount:
+
+    <div className="col-12 p-0">
+      <div className="col-12 main-bk-color color-text nav-top-app text-center">
+        <h2 className="top-title">New Measurement</h2>
+      </div>
+      <div className="new-edit-msm">
+        <div className="d-flex flex-column text-center">
+          <div className="nutrient-title-bk my-5">
+            <p className="nutrient-title"><strong>Protein (grams)</strong></p>
           </div>
-          <input
-            type="number"
-            name="amount"
-            defaultValue={form.amount}
-            onChange={handleChange}
-            className="form-control"
-            step=".01"
-            required
-          />
+
+          <form onSubmit={handleSubmit} className="form-section my-5">
+            <div className="range my-5">
+              <CircleSlider
+                value={form.amount}
+                onChange={handleChange}
+                progressColor="#ADDC91"
+                size={600}
+                showTooltip
+                min={0}
+                max={50}
+                stepSize={0.01}
+                tooltipSize={50}
+              />
+            </div>
+            <button type="submit" className="btn btn-lg btn-primary my-5 btn-form">Create Measurement</button>
+          </form>
         </div>
+      </div>
 
-        <button type="submit" className="btn btn-primary">Create Measurement</button>
-      </form>
+
     </div>
-
   );
 };
 

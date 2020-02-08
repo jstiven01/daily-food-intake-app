@@ -220,3 +220,25 @@ a:hover {
   font-size: 36px;
   color: 	#8395A5;
 }
+
+.nutrient-title {
+    font-size: 60px;
+    color: 	#8395A5;
+}
+
+.new-edit-msm {
+    background-color: #F1F2F4;
+    height: 100%;
+}
+
+.form-section{
+    background-color: white;
+}
+
+.btn-form{
+    font-size: 30px;
+}
+
+.range {
+    font-size: 60px !important;
+}
