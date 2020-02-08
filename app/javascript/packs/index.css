@@ -19,6 +19,13 @@ h1 {
 h2 {
     font-size: 25px !important;
 }
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
 
 .color-text {
     color:#E8FCFF;
@@ -155,7 +162,7 @@ h2 {
     
 }
 
-.main-container a {    
+.dark-panel a {    
     color: white;    
     font-size: 40px;
 
@@ -167,4 +174,49 @@ h2 {
     color: white; 
     font-size: 40px;
     margin-bottom: 14px;
+}
+
+
+.link-add-measurement {
+    color: inherit;
+}
+
+.measurement-data {
+    height: auto;
+    background-color: white;
+}
+.all-measurements {
+    height: 100%;
+    overflow: auto;
+    background-color: #F1F2F4;
+}
+
+.circle-progress-m {
+    width: 7% !important;
+}
+.info-msm {
+    font-size: 42px;
+}
+
+.link-edit-delete{
+    font-size: 50px;
+    text-decoration: none;
+    margin: 0 0 0 8px;
+    color: 	#8395A5 !important;
+}
+
+.units-amount strong {
+    margin-bottom: 0;
+    font-size: 46px;
+    margin-right: 2px;
+}
+
+.percentage-info{
+    font-size: 25px;
+
+}
+
+.date-msm{
+  font-size: 36px;
+  color: 	#8395A5;
 }

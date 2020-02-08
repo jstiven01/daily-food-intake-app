@@ -16,9 +16,9 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
       <Link to={`/nutrient/${nutrient.id}/measurements`}>
         <div className="d-flex">
           <div className="align-self-center">
-          <div className={`${nutrient.name}-img`} />
+            <div className={`${nutrient.name}-img`} />
           </div>
-          
+
           <div className="description">
             <p><strong>{nutrient.name}</strong></p>
             <p>
