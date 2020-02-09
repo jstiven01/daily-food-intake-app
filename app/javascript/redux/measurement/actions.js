@@ -82,7 +82,7 @@ export const postMeasurement = (nutrientId, amount, history) => dispatch => {
     });
 };
 
-export const editMeasurement = (nutrientId, measurementId, amount) => dispatch => {
+export const editMeasurement = (nutrientId, measurementId, amount, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -101,6 +101,7 @@ export const editMeasurement = (nutrientId, measurementId, amount) => dispatch =
     .then(response => {
       if (response.status === 204) {
         dispatch(editMeasurementSuccess('Measurement was edited !!'));
+        history.push(`/nutrient/${nutrientId}/measurements`);
       }
     })
     .catch(error => {

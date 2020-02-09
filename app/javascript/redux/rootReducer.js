@@ -4,7 +4,7 @@ import authReducer from './auth/reducer';
 import nutrientsReducer from './nutrients/reducer';
 import measurementsReducer from './measurements/reducer';
 import measurementReducer from './measurement/reducer';
-import progressesReducer from './progresses/reducer'
+import progressesReducer from './progresses/reducer';
 
 const rootReducer = combineReducers({
 

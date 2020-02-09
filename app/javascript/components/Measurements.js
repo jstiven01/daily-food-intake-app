@@ -32,7 +32,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
 
 
   const jsxMeasurementsToday = measurementsToday.map(msm => (
-    <div key={msm.id} className="measurement-data py-4 px-5">
+    <div key={msm.id} className="measurement-data py-4 px-5 border">
 
       <div className="d-flex progress-data">
         <div className="text-center circle align-self-center circle-progress-m">
@@ -53,6 +53,9 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
                 year: 'numeric',
                 month: 'short',
                 day: '2-digit',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>
@@ -78,7 +81,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
   ));
 
   const jsxMeasurementsYesterday = measurementsYesterday.map(msm => (
-    <div key={msm.id} className="measurement-data py-4 px-5">
+    <div key={msm.id} className="measurement-data py-4 px-5 border">
 
       <div className="d-flex progress-data">
         <div className="text-center circle align-self-center circle-progress-m">
@@ -99,6 +102,9 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
                 year: 'numeric',
                 month: 'short',
                 day: '2-digit',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>
@@ -124,7 +130,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
   ));
 
   const jsxMeasurementsLastWeek = measurementsLastWeek.map(msm => (
-    <div key={msm.id} className="measurement-data py-4 px-5">
+    <div key={msm.id} className="measurement-data last-msm py-4 px-5 border">
 
       <div className="d-flex progress-data">
         <div className="text-center circle align-self-center circle-progress-m">
@@ -145,6 +151,9 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
                 year: 'numeric',
                 month: 'short',
                 day: '2-digit',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>

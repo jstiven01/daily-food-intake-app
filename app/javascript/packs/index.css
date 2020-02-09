@@ -187,7 +187,7 @@ a:hover {
 }
 .all-measurements {
     height: 100%;
-    overflow: auto;
+    overflow: scroll;
     background-color: #F1F2F4;
 }
 
@@ -224,6 +224,7 @@ a:hover {
 .nutrient-title {
     font-size: 60px;
     color: 	#8395A5;
+    margin-bottom: 0;
 }
 
 .new-edit-msm {
@@ -236,9 +237,14 @@ a:hover {
 }
 
 .btn-form{
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .range {
     font-size: 60px !important;
 }
+
+.last-msm:last-child {
+    height: 22%;
+}
+

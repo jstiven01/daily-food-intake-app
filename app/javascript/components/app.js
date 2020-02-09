@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentUserIsLogged } = this.props;
+    const { currentUserIsLogged, location } = this.props;
     let classCss = '';
     if (currentUserIsLogged) {
       classCss = 'container-app';
@@ -49,7 +49,7 @@ class App extends React.Component {
             <Route exact path="/myProgress" component={Progresses} />
           </Switch>
         </div>
-        {currentUserIsLogged
+        {currentUserIsLogged && location.pathname !== '/'
           ? (
             <div className="col-12 p-0 dark-panel d-flex justify-content-around">
               <div className="add-measure align-self-center">
@@ -89,6 +89,9 @@ App.propTypes = {
   checkingIsLogged: PropTypes.func.isRequired,
   logOutUser: PropTypes.func.isRequired,
   currentUserIsLogged: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 
