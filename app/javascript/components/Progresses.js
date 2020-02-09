@@ -11,7 +11,7 @@ const Progresses = ({ progressesData, getProgresses }) => {
 
   const jsxProgressNutrients = progressesData.map(prg => (
     <div key={prg.name} className="col-12 progress-section mx-auto mt-2">
-      <h4>{prg.name}</h4>
+      <h4 className="progress-title"><strong>{prg.name}</strong></h4>
       <Chart data={prg} />
     </div>
   ));
@@ -23,7 +23,7 @@ const Progresses = ({ progressesData, getProgresses }) => {
       <div className="col-12 main-bk-color color-text nav-top-app text-center">
         <h2 className="top-title">My Progress</h2>
       </div>
-      <div className="mt-4">
+      <div className="histograms mt-4">
         {jsxProgressNutrients}
       </div>
 

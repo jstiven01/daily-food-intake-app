@@ -5,9 +5,17 @@ import { Bar } from 'react-chartjs-2';
 
 const Chart = ({ data }) => {
   const dateFormat = {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 40,
+        fontColor: '#8395A5',
+        fontStyle: 'bold',
+      },
+    },
+
     scales: {
       xAxes: [{
-
         type: 'time',
         time: {
           unit: 'day',
@@ -16,18 +24,29 @@ const Chart = ({ data }) => {
             day: 'MMM DD',
           },
         },
+        ticks: {
+          fontSize: 32,
+        },
+        gridLines: {
+          display: false,
+        },
       }],
       yAxes: [{
         ticks: {
+          fontSize: 40,
           beginAtZero: true,
         },
+        gridLines: {
+          display: false,
+        },
+
       }],
     },
   };
 
   return (
-    <div>
-      <Bar data={data} options={dateFormat} />
+    <div className="chart-font-size">
+      <Bar data={data} height={200} options={dateFormat} />
     </div>
   );
 };
