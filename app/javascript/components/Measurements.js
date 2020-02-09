@@ -9,7 +9,15 @@ import { getMeasurements } from '../redux/measurements/actions';
 // eslint-disable-next-line react/prop-types
 const Measurements = ({ match, measurementsData, getMeasurements }) => {
   // eslint-disable-next-line react/prop-types
-  const { params: { id } } = match;
+  const { params: { id, nutrient } } = match;
+
+  const goalsNutrients = {
+    Protein: 50,
+    Fat: 65,
+    Carbs: 300,
+  };
+
+  const goal = goalsNutrients[nutrient];
 
   useEffect(() => {
     getMeasurements(id);
@@ -38,7 +46,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
         <div className="text-center circle align-self-center circle-progress-m">
           <CircularProgressbar
             className="align-self-center"
-            value={50}
+            value={Math.round((msm.amount / goal) * 100)}
             styles={buildStyles({
               textColor: '#8395A5',
               pathColor: '#ADDC91',
@@ -59,7 +67,16 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>
-          <span className="percentage-info">Percentage</span>
+          <span className="percentage-info">
+            {nutrient}
+            {' '}
+            goal:
+            {' '}
+            {Math.round((msm.amount / goal) * 100)}
+            {' '}
+            %
+            {' '}
+          </span>
         </div>
         <div className="description">
           <p className="units-amount">
@@ -70,7 +87,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
           </p>
         </div>
         <div className="description link-edit-delete">
-          <Link to={`/nutrient/${id}/measurement/${msm.id}`}>
+          <Link to={`/nutrient/${id}/${nutrient}/measurement/${msm.id}`}>
             <p>&gt;</p>
           </Link>
         </div>
@@ -87,7 +104,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
         <div className="text-center circle align-self-center circle-progress-m">
           <CircularProgressbar
             className="align-self-center"
-            value={50}
+            value={Math.round((msm.amount / goal) * 100)}
             styles={buildStyles({
               textColor: '#8395A5',
               pathColor: '#ADDC91',
@@ -108,7 +125,15 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>
-          <span className="percentage-info">Percentage</span>
+          <span className="percentage-info">
+            {nutrient}
+            {' '}
+            goal:
+            {' '}
+            {Math.round((msm.amount / goal) * 100)}
+            {' '}
+            %
+          </span>
         </div>
         <div className="description">
           <p className="units-amount">
@@ -119,7 +144,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
           </p>
         </div>
         <div className="description link-edit-delete">
-          <Link to={`/nutrient/${id}/measurement/${msm.id}`}>
+          <Link to={`/nutrient/${id}/${nutrient}/measurement/${msm.id}`}>
             <p>&gt;</p>
           </Link>
         </div>
@@ -136,7 +161,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
         <div className="text-center circle align-self-center circle-progress-m">
           <CircularProgressbar
             className="align-self-center"
-            value={50}
+            value={Math.round((msm.amount / goal) * 100)}
             styles={buildStyles({
               textColor: '#8395A5',
               pathColor: '#ADDC91',
@@ -157,7 +182,15 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
               }).format(new Date(msm.date_intake)).replace(',', '')}
             </strong>
           </p>
-          <span className="percentage-info">Percentage</span>
+          <span className="percentage-info">
+            {nutrient}
+            {' '}
+            goal:
+            {' '}
+            {Math.round((msm.amount / goal) * 100)}
+            {' '}
+            %
+          </span>
         </div>
         <div className="description">
           <p className="units-amount">
@@ -168,7 +201,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
           </p>
         </div>
         <div className="description link-edit-delete">
-          <Link to={`/nutrient/${id}/measurement/${msm.id}`}>
+          <Link to={`/nutrient/${id}/${nutrient}/measurement/${msm.id}`}>
             <p>&gt;</p>
           </Link>
         </div>
@@ -185,7 +218,7 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
         <div className="top-title d-flex">
           <p className="flex-grow-1 my-0 text-right pl-5">Measurements</p>
           <p className="flex-grow-1 my-0 pr-4 text-right">
-            <Link to={`/nutrient/${id}/new/measurement`} className="link-add-measurement">
+            <Link to={`/nutrient/${id}/${nutrient}/new/measurement`} className="link-add-measurement">
               +
             </Link>
           </p>

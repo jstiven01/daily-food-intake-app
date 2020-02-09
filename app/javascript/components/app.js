@@ -43,9 +43,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/main" component={Nutrients} />
-            <Route exact path="/nutrient/:id/measurements" component={Measurements} />
-            <Route exact path="/nutrient/:id/new/measurement" component={NewMeasurement} />
-            <Route exact path="/nutrient/:idn/measurement/:idm" component={Measurement} />
+            <Route exact path="/nutrient/:id/:nutrient/measurements" component={Measurements} />
+            <Route exact path="/nutrient/:id/:nutrient/new/measurement" component={NewMeasurement} />
+            <Route exact path="/nutrient/:idn/:nutrient/measurement/:idm" component={Measurement} />
             <Route exact path="/myProgress" component={Progresses} />
           </Switch>
         </div>

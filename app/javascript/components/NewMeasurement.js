@@ -10,11 +10,18 @@ const Measurement = ({
   match, postMeasurement, history,
 }) => {
   // eslint-disable-next-line react/prop-types
-  const { params: { id } } = match;
+  const { params: { id, nutrient } } = match;
 
   const [form, setState] = useState({
     amount: 0.0,
   });
+  const goalsNutrients = {
+    Protein: 50,
+    Fat: 65,
+    Carbs: 300,
+  };
+
+  const goal = goalsNutrients[nutrient];
 
 
   const handleChange = value => {
@@ -26,7 +33,7 @@ const Measurement = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    postMeasurement(id, form.amount, history);
+    postMeasurement(id, form.amount, nutrient, history);
   };
 
 
@@ -39,7 +46,13 @@ const Measurement = ({
       <div className="new-edit-msm">
         <div className="d-flex flex-column text-center">
           <div className="nutrient-title-bk my-5">
-            <p className="nutrient-title"><strong>Protein (grams)</strong></p>
+            <p className="nutrient-title">
+              <strong>
+                {nutrient}
+                {' '}
+                (grams)
+              </strong>
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="form-section my-5">
@@ -51,7 +64,7 @@ const Measurement = ({
                 size={600}
                 showTooltip
                 min={0}
-                max={50}
+                max={goal}
                 stepSize={0.01}
                 tooltipSize={50}
               />
@@ -79,7 +92,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postMeasurement: (id, data, history) => dispatch(postMeasurement(id, data, history)),
+  postMeasurement: (id, data, nutrient, history) => dispatch(
+    postMeasurement(id, data, nutrient, history),
+  ),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Measurement));

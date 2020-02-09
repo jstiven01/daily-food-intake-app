@@ -11,35 +11,54 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
     getNutrients();
   }, []);
 
-  const jsxNutrients = nutrientsData.map(nutrient => (
-    <div key={nutrient.id} className="nutrient">
-      <Link to={`/nutrient/${nutrient.id}/measurements`}>
-        <div className="d-flex">
-          <div className="align-self-center">
-            <div className={`${nutrient.name}-img`} />
-          </div>
+  const goalsNutrients = {
+    Protein: 50,
+    Fat: 65,
+    Carbs: 300,
+  };
 
-          <div className="description">
-            <p><strong>{nutrient.name}</strong></p>
-            <p>
-              total:
-              { nutrient.date_progress.substring(0, 10)
+  const jsxNutrients = nutrientsData.map(nutrient => {
+    const goal = goalsNutrients[nutrient.name];
+    return (
+      <div key={nutrient.id} className="nutrient">
+        <Link to={`/nutrient/${nutrient.id}/${nutrient.name}/measurements`}>
+          <div className="d-flex">
+            <div className="align-self-center">
+              <div className={`${nutrient.name}-img`} />
+            </div>
+
+            <div className="description">
+              <p><strong>{nutrient.name}</strong></p>
+              <p>
+                total:
+                { nutrient.date_progress.substring(0, 10)
               === new Date().toISOString().substring(0, 10)
-                ? nutrient.total_nutrient : 0}
-              {' '}
-              <span> </span>
-              {nutrient.units}
-            </p>
+                  ? nutrient.total_nutrient : 0}
+                {' '}
+                <span> </span>
+                {nutrient.units}
+              </p>
 
 
+            </div>
+            <div className="goals description flex-grow-1 text-right mr-4">
+              <p><strong>Goal</strong></p>
+              <p>
+                {goal}
+                {' '}
+                grams
+              </p>
+
+
+            </div>
           </div>
-        </div>
 
 
-      </Link>
+        </Link>
 
-    </div>
-  ));
+      </div>
+    );
+  });
 
 
   let totalProtein;
@@ -69,9 +88,9 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
     }
   }
 
-  const percentageProtein = Math.round((totalProtein / 50) * 100);
-  const percentageCarbs = Math.round((totalCarbs / 300) * 100);
-  const percentageFat = Math.round((totalFat / 100) * 100);
+  const percentageProtein = Math.round((totalProtein / goalsNutrients.Protein) * 100);
+  const percentageCarbs = Math.round((totalCarbs / goalsNutrients.Carbs) * 100);
+  const percentageFat = Math.round((totalFat / goalsNutrients.Fat) * 100);
   const today = new Date();
   return (
 

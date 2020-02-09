@@ -10,11 +10,19 @@ const Measurement = ({
   match, measurementData, getMeasurement, editMeasurement, deleteMeasurement, history,
 }) => {
   // eslint-disable-next-line react/prop-types
-  const { params: { idn, idm } } = match;
+  const { params: { idn, idm, nutrient } } = match;
 
   useEffect(() => {
     getMeasurement(idn, idm);
   }, []);
+
+  const goalsNutrients = {
+    Protein: 50,
+    Fat: 65,
+    Carbs: 300,
+  };
+
+  const goal = goalsNutrients[nutrient];
 
   const [form, setState] = useState({
     amount: 0.0,
@@ -30,9 +38,9 @@ const Measurement = ({
   const handleSubmit = event => {
     event.preventDefault();
     if (event.target.id === 'update-form') {
-      editMeasurement(idn, idm, form.amount, history);
+      editMeasurement(idn, idm, form.amount, nutrient, history);
     } else {
-      deleteMeasurement(idn, idm, history);
+      deleteMeasurement(idn, idm, nutrient, history);
     }
   };
 
@@ -83,7 +91,13 @@ const Measurement = ({
 
         <div className="d-flex flex-column text-center">
           <div className="nutrient-title-bk my-3">
-            <p className="nutrient-title"><strong>Protein (grams)</strong></p>
+            <p className="nutrient-title">
+              <strong>
+                {nutrient}
+                {' '}
+                (grams)
+              </strong>
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="form-section my-4" id="update-form">
@@ -95,7 +109,7 @@ const Measurement = ({
                 size={600}
                 showTooltip
                 min={0}
-                max={50}
+                max={goal}
                 stepSize={0.01}
                 tooltipSize={60}
               />
@@ -129,10 +143,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMeasurement: (idn, idm) => dispatch(getMeasurement(idn, idm)),
-  editMeasurement: (idn, idm, amount, history) => dispatch(
-    editMeasurement(idn, idm, amount, history),
+  editMeasurement: (idn, idm, amount, nutrient, history) => dispatch(
+    editMeasurement(idn, idm, amount, nutrient, history),
   ),
-  deleteMeasurement: (idn, idm, history) => dispatch(deleteMeasurement(idn, idm, history)),
+  deleteMeasurement: (idn, idm, nutrient, history) => dispatch(
+    deleteMeasurement(idn, idm, nutrient, history),
+  ),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Measurement));

@@ -53,7 +53,7 @@ export const getMeasurement = (nutrientId, measurementId) => dispatch => {
     });
 };
 
-export const postMeasurement = (nutrientId, amount, history) => dispatch => {
+export const postMeasurement = (nutrientId, amount, nutrient, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -74,7 +74,7 @@ export const postMeasurement = (nutrientId, amount, history) => dispatch => {
     .then(response => {
       if (response.status === 201) {
         dispatch(postMeasurementSuccess('Measurement was created!!'));
-        history.push(`/nutrient/${nutrientId}/measurements`);
+        history.push(`/nutrient/${nutrientId}/${nutrient}/measurements`);
       }
     })
     .catch(error => {
@@ -82,7 +82,8 @@ export const postMeasurement = (nutrientId, amount, history) => dispatch => {
     });
 };
 
-export const editMeasurement = (nutrientId, measurementId, amount, history) => dispatch => {
+export const editMeasurement = (nutrientId, measurementId,
+  amount, nutrient, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -101,7 +102,7 @@ export const editMeasurement = (nutrientId, measurementId, amount, history) => d
     .then(response => {
       if (response.status === 204) {
         dispatch(editMeasurementSuccess('Measurement was edited !!'));
-        history.push(`/nutrient/${nutrientId}/measurements`);
+        history.push(`/nutrient/${nutrientId}/${nutrient}/measurements`);
       }
     })
     .catch(error => {
@@ -109,7 +110,7 @@ export const editMeasurement = (nutrientId, measurementId, amount, history) => d
     });
 };
 
-export const deleteMeasurement = (nutrientId, measurementId, history) => dispatch => {
+export const deleteMeasurement = (nutrientId, measurementId, nutrient, history) => dispatch => {
   const { token } = localStorage;
   dispatch(measurementsRequest());
   axios
@@ -125,7 +126,7 @@ export const deleteMeasurement = (nutrientId, measurementId, history) => dispatc
     .then(response => {
       if (response.status === 204) {
         dispatch(deleteMeasurementSuccess('Measurement was deleted!!'));
-        history.push(`/nutrient/${nutrientId}/measurements`);
+        history.push(`/nutrient/${nutrientId}/${nutrient}/measurements`);
       }
     })
     .catch(error => {
