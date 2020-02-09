@@ -11,13 +11,13 @@ class Measurement < ApplicationRecord
 
   def update_nutrient_progress
     # nutrient = Nutrient.find(nutrient_id)
-    sum_measurements = nutrient.measurements.where('DATE(date_intake) = ?', Date.today).sum(:amount)
-    nutrient.update_attributes(total_nutrient: sum_measurements, date_progress: Date.today)
-    progress = nutrient.progresses.find_by(date_progress: Date.today)
+    sum_measurements = nutrient.measurements.where('DATE(date_intake) = ?', date_intake).sum(:amount)
+    nutrient.update_attributes(total_nutrient: sum_measurements, date_progress: date_intake)
+    progress = nutrient.progresses.find_by(date_progress: date_intake)
     if progress
       progress.update_attributes(total_date: sum_measurements)
     else
-      nutrient.progresses.create!(date_progress: Date.today, total_date: sum_measurements,
+      nutrient.progresses.create!(date_progress: date_intake, total_date: sum_measurements,
                                   units: nutrient.units)
     end
   end

@@ -9,6 +9,7 @@ const Progresses = ({ progressesData, getProgresses }) => {
     getProgresses();
   }, []);
 
+
   const jsxProgressNutrients = progressesData.map(prg => (
     <div key={prg.name} className="col-12 progress-section mx-auto mt-2">
       <h4 className="progress-title"><strong>{prg.name}</strong></h4>
@@ -24,7 +25,9 @@ const Progresses = ({ progressesData, getProgresses }) => {
         <h2 className="top-title">My Progress</h2>
       </div>
       <div className="histograms mt-4">
-        {jsxProgressNutrients}
+        {progressesData[0].datasets.length === 0
+          ? <p className="description mx-auto text-center">Please add one Measurement !!</p>
+          : jsxProgressNutrients}
       </div>
 
     </div>
@@ -33,6 +36,9 @@ const Progresses = ({ progressesData, getProgresses }) => {
 Progresses.propTypes = {
   progressesData: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
+    datasets: PropTypes.arrayOf(PropTypes.shape({
+      length: PropTypes.integer,
+    })),
   })).isRequired,
   getProgresses: PropTypes.func.isRequired,
 };

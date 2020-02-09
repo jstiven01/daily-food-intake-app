@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_122403) do
+ActiveRecord::Schema.define(version: 2020_02_09_211607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_02_06_122403) do
     t.string "name"
     t.float "total_nutrient"
     t.string "units"
-    t.datetime "date_progress"
+    t.string "date_progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_06_122403) do
   end
 
   create_table "progresses", force: :cascade do |t|
-    t.datetime "date_progress"
+    t.string "date_progress"
     t.float "total_date"
     t.string "units"
     t.bigint "nutrient_id"

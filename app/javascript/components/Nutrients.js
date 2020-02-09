@@ -17,6 +17,9 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
     Carbs: 300,
   };
 
+  const today = new Date();
+  const todayWithHoursZero = today.setHours(0, 0, 0, 0);
+
   const jsxNutrients = nutrientsData.map(nutrient => {
     const goal = goalsNutrients[nutrient.name];
     return (
@@ -31,8 +34,8 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
               <p><strong>{nutrient.name}</strong></p>
               <p>
                 total:
-                { nutrient.date_progress.substring(0, 10)
-              === new Date().toISOString().substring(0, 10)
+                { new Date(nutrient.date_progress).setHours(0, 0, 0, 0)
+              === todayWithHoursZero
                   ? nutrient.total_nutrient : 0}
                 {' '}
                 <span> </span>
@@ -66,21 +69,21 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   let totalFat;
   if (nutrientsData.length > 0) {
     const protein = nutrientsData.filter(nutrient => nutrient.name === 'Protein'
-    && nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10))[0];
+    && new Date(nutrient.date_progress).setHours(0, 0, 0, 0) === todayWithHoursZero)[0];
     if (!protein) {
       totalProtein = 0;
     } else {
       totalProtein = protein.total_nutrient;
     }
     const carbs = nutrientsData.filter(nutrient => nutrient.name === 'Carbs'
-    && nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10))[0];
+    && new Date(nutrient.date_progress).setHours(0, 0, 0, 0) === todayWithHoursZero)[0];
     if (!carbs) {
       totalCarbs = 0;
     } else {
       totalCarbs = carbs.total_nutrient;
     }
     const fat = nutrientsData.filter(nutrient => nutrient.name === 'Fat'
-    && nutrient.date_progress.substring(0, 10) === new Date().toISOString().substring(0, 10))[0];
+    && new Date(nutrient.date_progress).setHours(0, 0, 0, 0) === todayWithHoursZero)[0];
     if (!fat) {
       totalFat = 0;
     } else {
@@ -91,7 +94,6 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
   const percentageProtein = Math.round((totalProtein / goalsNutrients.Protein) * 100);
   const percentageCarbs = Math.round((totalCarbs / goalsNutrients.Carbs) * 100);
   const percentageFat = Math.round((totalFat / goalsNutrients.Fat) * 100);
-  const today = new Date();
   return (
 
     <div className="col-12 p-0">

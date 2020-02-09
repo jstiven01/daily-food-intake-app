@@ -38,7 +38,7 @@ class Login extends React.Component {
     } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="col-12 forms" >
+        <form onSubmit={this.handleSubmit} className="col-12 forms">
           <div className="form-group">
             <input
               type="email"

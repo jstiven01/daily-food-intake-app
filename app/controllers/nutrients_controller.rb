@@ -11,7 +11,9 @@ class NutrientsController < ApplicationController
 
   # POST /nutrients
   def create
-    @nutrient = current_user.nutrients.create!(nutrient_params)
+    @nutrient = current_user.nutrients.new(nutrient_params)
+    @nutrient.date_progress = DateTime.now
+    @nutrient.save
     json_response(@nutrient, :created)
   end
 

@@ -6,9 +6,10 @@ const preparingDataChart = nutrientArray => {
   for (let i = 9; i > -1; i -= 1) {
     const today = new Date();
     const scaleDate = today.setDate(today.getDate() - i);
+    const todayWithHoursZero = today.setHours(0, 0, 0, 0);
     labelsDate.push(scaleDate);
     const findData = nutrientArray.filter(
-      nutr => nutr.date_progress.substring(0, 10) === today.toISOString().substring(0, 10),
+      nutr => new Date(nutr.date_progress).setHours(0, 0, 0, 0) === todayWithHoursZero,
     );
     if (findData.length > 0) {
       axisYData.push(nutrientArray[i].total_date);

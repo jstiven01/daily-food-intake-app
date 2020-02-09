@@ -225,6 +225,9 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
         </div>
       </div>
       <div className="all-measurements">
+        {measurementsData.length === 0
+          ? <p className="description mx-auto text-center my-4 ">Please add one Measurement!! Click on +</p>
+          : null }
         <div className="measurements-section">
           {measurementsToday.length > 0 ? <p className="date-msm ml-5 my-3"><strong>Today</strong></p> : null}
           {measurementsToday.length > 0 ? jsxMeasurementsToday : null }

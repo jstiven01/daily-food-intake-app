@@ -59,7 +59,7 @@ a:hover {
 }
 
 .input-font-size {
-    font-size: 34px;
+    font-size: 34px !important;
 }
 
 .main-bk-color{
