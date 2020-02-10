@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class NutrientsController < ApplicationController
   before_action :set_nutrient, only: %i[show update destroy]
 

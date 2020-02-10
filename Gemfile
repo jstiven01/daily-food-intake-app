@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -19,6 +17,8 @@ gem 'faker', git: 'https://github.com/stympy/faker'
 gem 'bcrypt', '~> 3.1.7'
 # jwt to generate token
 gem 'jwt'
+# rubocop
+gem 'rubocop'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

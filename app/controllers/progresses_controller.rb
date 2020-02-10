@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProgressesController < ApplicationController
   def index
     @nutrients = current_user.nutrients
