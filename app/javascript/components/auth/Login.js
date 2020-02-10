@@ -12,7 +12,6 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      loginErrors: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,6 +35,7 @@ class Login extends React.Component {
     const {
       email, password,
     } = this.state;
+    const { errorLoginData } = this.props;
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="col-12 forms">
@@ -64,16 +64,22 @@ class Login extends React.Component {
 
           <button type="submit" className="btn btn-primary input-font-size">Login</button>
         </form>
+        {errorLoginData === '' ? null : <div className="alert alert-warning sign-up-warning">Email or password is incorrect!!</div>}
       </div>
     );
   }
 }
 Login.propTypes = {
   userPostLogin: PropTypes.func.isRequired,
+  errorLoginData: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  errorLoginData: state.currentUser.errorLogin,
+});
 
 const mapDispatchToProps = dispatch => ({
   userPostLogin: (history, userInfo) => dispatch(userPostLogin(history, userInfo)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Login));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

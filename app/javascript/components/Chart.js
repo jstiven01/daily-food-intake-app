@@ -8,7 +8,7 @@ const Chart = ({ data }) => {
     legend: {
       display: true,
       labels: {
-        fontSize: 40,
+        fontSize: 30,
         fontColor: '#8395A5',
         fontStyle: 'bold',
       },
@@ -16,6 +16,8 @@ const Chart = ({ data }) => {
 
     scales: {
       xAxes: [{
+        categoryPercentage: 1.5,
+        barPercentage: 0.4,
         type: 'time',
         time: {
           unit: 'day',

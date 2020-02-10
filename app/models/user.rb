@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :nutrients, foreign_key: :user_id
   # Validations
   validates_presence_of :name, :email, :password_digest
+  validates_uniqueness_of :email, case_sensitive: false
 end

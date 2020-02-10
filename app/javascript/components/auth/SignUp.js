@@ -13,7 +13,6 @@ class SignUp extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      signUpErrors: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,6 +36,7 @@ class SignUp extends React.Component {
     const {
       name, email, password, passwordConfirmation,
     } = this.state;
+    const { errorSignUpData } = this.props;
     return (
       <div className="col-12 forms">
         <form onSubmit={this.handleSubmit}>
@@ -87,16 +87,22 @@ class SignUp extends React.Component {
           </div>
           <button type="submit" className="btn btn-primary input-font-size">Register</button>
         </form>
+        {errorSignUpData === '' ? null : <div className="alert alert-warning sign-up-warning">This email already exists or wrong password confirmation!!</div>}
       </div>
     );
   }
 }
 SignUp.propTypes = {
   userPostSignUp: PropTypes.func.isRequired,
+  errorSignUpData: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  errorSignUpData: state.currentUser.errorSignUp,
+});
 
 const mapDispatchToProps = dispatch => ({
   userPostSignUp: (history, userInfo) => dispatch(userPostSignUp(history, userInfo)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(SignUp));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));

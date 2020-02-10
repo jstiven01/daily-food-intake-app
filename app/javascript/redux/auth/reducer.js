@@ -1,5 +1,7 @@
 const initialState = {
   currentUser: {},
+  errorSignUp: '',
+  errorLogin: '',
   error: '',
   isLogged: false,
 };
@@ -16,6 +18,14 @@ export default function authReducer(state = initialState, action) {
       return { ...state, isLogged: true };
     case 'FAILURE':
       return { currentUser: {}, error: action.payload, isLogged: false };
+    case 'FAILURE_SIGN_UP':
+      return {
+        currentUser: {}, errorSignUp: action.payload, isLogged: false, errorLogin: '',
+      };
+    case 'FAILURE_LOGIN':
+      return {
+        currentUser: {}, errorLogin: action.payload, isLogged: false, errorSignUp: '',
+      };
     default:
       return state;
   }

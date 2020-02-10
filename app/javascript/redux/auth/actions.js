@@ -16,6 +16,15 @@ const FailureAction = error => ({
   payload: error,
 });
 
+const FailureSignUpAction = error => ({
+  type: 'FAILURE_SIGN_UP',
+  payload: error,
+});
+const FailureLoginAction = error => ({
+  type: 'FAILURE_LOGIN',
+  payload: error,
+});
+
 const isLoggedInAction = error => ({
   type: 'IS_LOGGED_IN',
   payload: error,
@@ -48,7 +57,7 @@ const userPostSignUp = (history, {
       }
     })
     .catch(error => {
-      dispatch(FailureAction(error));
+      dispatch(FailureSignUpAction(error));
     });
 };
 
@@ -72,7 +81,7 @@ const userPostLogin = (history, {
       }
     })
     .catch(error => {
-      dispatch(FailureAction(error));
+      dispatch(FailureLoginAction(error));
     });
 };
 
