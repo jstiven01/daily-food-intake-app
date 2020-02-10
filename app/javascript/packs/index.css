@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+
+.container-home {
+    height: 100%;
+}
+.container-app {
+    height: 92%;
+    background-color: white;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h1 {
+    font-size: 90px !important;
+}
+
+h2 {
+    font-size: 25px !important;
+}
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.color-text {
+    color:#E8FCFF;
+}
+.nav-top {
+    background-color: #42B5E8;
+    color:#E8FCFF;
+    text-align: center;
+    font-weight: bold;
+    height: 10%;
+}
+
+.buttons-home {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    font-size: 50px;
+}
+
+.auth-span {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.container-forms{
+    width: 500px;
+    height: 75%;
+}
+.forms{
+    height: 100%;
+}
+
+.input-font-size {
+    font-size: 34px !important;
+}
+
+.main-bk-color{
+    background-color: #42B5E8;
+}
+
+
+.top-title {
+    font-size: 50px !important;
+    padding-top: 70px;
+}
+
+.dark-panel{
+    background-color: 	#2F3B47;
+    height: 8%;
+    z-index: 900;
+}
+
+.nav-top-app {
+    height: 12%;
+}
+
+.section-statistics {
+    height: 34%;
+}
+
+.nutrients-global {
+    height: 54%;
+    background-color: #F1F2F4;
+    padding-top: 10px;
+}
+
+.nutrient {
+    height: 21%;
+    background-color: white;
+    font-size: 30px !important;
+    margin: 36px 36px;
+}
+
+.progresses-section {
+    width: 88%;
+}
+
+.progress-section {
+    width: 82%;
+}
+
+.progress-section:last-child {
+    height: 70%;
+}
+
+.date-main {
+   height: 23%;
+}
+
+.main-size-date {
+    font-size: 40px;
+    color: #5B8092;
+}
+
+.circle-progress {
+    width: 76% !important;
+}
+
+.span-name-statistics {
+    font-size: 20px;
+    color: 	#8395A5;
+    font-size: 36px;
+}
+
+.Protein-img {
+    background-image: url('./img/protein.png');
+    background-repeat: no-repeat;
+    width: 110px;
+    height: 110px;
+    margin: 5px 18px 0 23px;
+}
+
+
+.Fat-img {
+    background-image: url('./img/fats.png');
+    width: 110px;
+    height: 110px;
+    background-repeat: no-repeat;
+    margin: 5px 18px 0 23px;
+}
+
+.Carbs-img {
+    background-image: url('./img/carbs.png');
+    width: 110px;
+    height: 110px;
+    background-repeat: no-repeat;
+    margin: 5px 18px 0 23px;
+}
+
+.description {
+    color: 	#8395A5;
+    font-size: 36px;
+    margin-left: 20px;
+}
+
+.main-container{
+    background-color: 	#2F3B47;
+    overflow: hidden;
+    
+}
+
+.dark-panel a {    
+    color: white;    
+    font-size: 40px;
+
+}
+
+.button-logout{
+    background-color: transparent;
+    border: 0;
+    color: white; 
+    font-size: 40px;
+    margin-bottom: 14px;
+}
+
+
+.link-add-measurement {
+    color: inherit;
+}
+
+.measurement-data {
+    height: auto;
+    background-color: white;
+}
+.all-measurements {
+    height: 100%;
+    overflow: scroll;
+    background-color: #F1F2F4;
+}
+
+.circle-progress-m {
+    width: 7% !important;
+}
+.info-msm {
+    font-size: 42px;
+}
+
+.link-edit-delete{
+    font-size: 50px;
+    text-decoration: none;
+    margin: 0 0 0 8px;
+    color: 	#8395A5 !important;
+}
+
+.units-amount strong {
+    margin-bottom: 0;
+    font-size: 46px;
+    margin-right: 2px;
+}
+
+.percentage-info{
+    font-size: 25px;
+
+}
+
+.date-msm{
+  font-size: 36px;
+  color: 	#8395A5;
+}
+
+.nutrient-title {
+    font-size: 60px;
+    color: 	#8395A5;
+    margin-bottom: 0;
+}
+
+.new-edit-msm {
+    background-color: #F1F2F4;
+    height: 100%;
+}
+
+.form-section{
+    background-color: white;
+}
+
+.btn-form{
+    font-size: 40px;
+    background-color: #ADDC91 !important;
+    border-color: #ADDC91 !important;
+    font-weight: 700;
+}
+.btn-delete {
+    font-size: 40px
+}
+
+.range {
+    font-size: 100px !important;
+}
+
+.last-msm:last-child {
+    height: 35%;
+}
+
+.progress-title {
+    color: 	#8395A5;
+    font-size: 50px;
+    margin: 30px 0;
+
+}
+.histograms {
+    overflow: scroll;
+    height: 100%;
+}
+
+.sign-up-warning{
+    font-size: 30px;
+}
