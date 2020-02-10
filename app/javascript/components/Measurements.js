@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { DateTime } from 'luxon';
 import 'react-circular-progressbar/dist/styles.css';
 import { getMeasurements } from '../redux/measurements/actions';
 
@@ -17,17 +18,17 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
     Carbs: 300,
   };
 
+
   const goal = goalsNutrients[nutrient];
 
   useEffect(() => {
     getMeasurements(id);
   }, []);
 
-  const today = new Date();
-  const todayWithHoursZero = today.setHours(0, 0, 0, 0);
-  const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date());
+  const todayWithHoursZero = new Date(DateTime.local()).setHours(0, 0, 0, 0);
+  const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date(DateTime.local()));
   const yesterdayWithHoursZero = yesterday.setHours(0, 0, 0, 0);
-  const lastSevenDays = (d => new Date(d.setDate(d.getDate() - 7)))(new Date());
+  const lastSevenDays = (d => new Date(d.setDate(d.getDate() - 7)))(new Date(DateTime.local()));
   const lastSevenDaysWithHoursZero = lastSevenDays.setHours(0, 0, 0, 0);
 
   const measurementsToday = measurementsData
@@ -37,7 +38,6 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
   const measurementsLastWeek = measurementsData
     .filter(msm => new Date(msm.date_intake).setHours(0, 0, 0, 0) < yesterdayWithHoursZero
     && new Date(msm.date_intake).setHours(0, 0, 0, 0) >= lastSevenDaysWithHoursZero);
-
 
   const jsxMeasurementsToday = measurementsToday.map(msm => (
     <div key={msm.id} className="measurement-data py-4 px-5 border">

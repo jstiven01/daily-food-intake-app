@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CircleSlider } from 'react-circle-slider';
+import { DateTime } from 'luxon';
 import { postMeasurement } from '../redux/measurement/actions';
 
 const Measurement = ({
@@ -33,7 +34,7 @@ const Measurement = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    postMeasurement(id, form.amount, nutrient, history);
+    postMeasurement(id, form.amount, DateTime.local(), nutrient, history);
   };
 
 
@@ -92,8 +93,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postMeasurement: (id, data, nutrient, history) => dispatch(
-    postMeasurement(id, data, nutrient, history),
+  postMeasurement: (id, data, dateIntake, nutrient, history) => dispatch(
+    postMeasurement(id, data, dateIntake, nutrient, history),
   ),
 });
 

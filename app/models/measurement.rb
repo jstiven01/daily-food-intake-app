@@ -21,13 +21,18 @@ class Measurement < ApplicationRecord
         end
       end
     end
-    nutrient.update_attributes!(total_nutrient: sum_measurements, date_progress: date_intake.to_time.beginning_of_day)
+
     progress = nutrient.progresses.where('DATE(date_progress) = ?', date_intake.to_time.beginning_of_day)
     if !progress.empty?
       progress[0].update_attributes!(total_date: sum_measurements)
+      if progress[0].date_progress == nutrient.date_progress
+        nutrient.update_attributes!(total_nutrient: sum_measurements)
+      end
     else
-      nutrient.progresses.create!(date_progress: date_intake.to_time.beginning_of_day, total_date: sum_measurements,
-                                  units: nutrient.units)
+      nutrient.update_attributes!(total_nutrient: sum_measurements,
+                                  date_progress: date_intake.to_time.beginning_of_day.iso8601)
+      nutrient.progresses.create!(date_progress: date_intake.to_time.beginning_of_day.iso8601,
+                                  total_date: sum_measurements, units: nutrient.units)
     end
   end
 end

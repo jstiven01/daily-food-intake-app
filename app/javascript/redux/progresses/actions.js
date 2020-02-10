@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { DateTime } from 'luxon';
 
 const preparingDataChart = nutrientArray => {
   const labelsDate = [];
   const axisYData = [];
   for (let i = 9; i > -1; i -= 1) {
-    const today = new Date();
+    const today = new Date(DateTime.local());
     const scaleDate = today.setDate(today.getDate() - i);
     const todayWithHoursZero = today.setHours(0, 0, 0, 0);
     labelsDate.push(scaleDate);
@@ -12,7 +13,7 @@ const preparingDataChart = nutrientArray => {
       nutr => new Date(nutr.date_progress).setHours(0, 0, 0, 0) === todayWithHoursZero,
     );
     if (findData.length > 0) {
-      axisYData.push(nutrientArray[i].total_date);
+      axisYData.push(findData[0].total_date);
     } else {
       axisYData.push(0);
     }

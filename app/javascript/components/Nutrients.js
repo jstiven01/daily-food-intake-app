@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { DateTime } from 'luxon';
 import { getNutrients } from '../redux/nutrients/actions';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -17,7 +18,7 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
     Carbs: 300,
   };
 
-  const today = new Date();
+  const today = new Date(DateTime.local());
   const todayWithHoursZero = today.setHours(0, 0, 0, 0);
 
   const jsxNutrients = nutrientsData.map(nutrient => {
@@ -33,7 +34,7 @@ const Nutrients = ({ nutrientsData, getNutrients }) => {
             <div className="description">
               <p><strong>{nutrient.name}</strong></p>
               <p>
-                total:
+                <strong>Total:</strong>
                 { new Date(nutrient.date_progress).setHours(0, 0, 0, 0)
               === todayWithHoursZero
                   ? nutrient.total_nutrient : 0}
