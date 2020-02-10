@@ -108,7 +108,7 @@ a:hover {
 }
 
 .progress-section:last-child {
-    height: 56%;
+    height: 70%;
 }
 
 .date-main {
@@ -252,11 +252,11 @@ a:hover {
 }
 
 .range {
-    font-size: 60px !important;
+    font-size: 100px !important;
 }
 
 .last-msm:last-child {
-    height: 22%;
+    height: 35%;
 }
 
 .progress-title {
