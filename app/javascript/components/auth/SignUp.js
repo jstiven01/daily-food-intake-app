@@ -87,7 +87,7 @@ class SignUp extends React.Component {
           </div>
           <button type="submit" className="btn btn-primary input-font-size">Register</button>
         </form>
-        {errorSignUpData === '' ? null : <div className="alert alert-warning sign-up-warning">This email already exists or wrong password confirmation!!</div>}
+        {errorSignUpData === '' ? null : <div className="alert alert-warning sign-up-warning">{errorSignUpData}</div>}
       </div>
     );
   }

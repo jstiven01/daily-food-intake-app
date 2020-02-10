@@ -243,6 +243,12 @@ a:hover {
 
 .btn-form{
     font-size: 40px;
+    background-color: #ADDC91 !important;
+    border-color: #ADDC91 !important;
+    font-weight: 700;
+}
+.btn-delete {
+    font-size: 40px
 }
 
 .range {

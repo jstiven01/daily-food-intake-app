@@ -64,7 +64,7 @@ class Login extends React.Component {
 
           <button type="submit" className="btn btn-primary input-font-size">Login</button>
         </form>
-        {errorLoginData === '' ? null : <div className="alert alert-warning sign-up-warning">Email or password is incorrect!!</div>}
+        {errorLoginData === '' ? null : <div className="alert alert-warning sign-up-warning">{errorLoginData}</div>}
       </div>
     );
   }

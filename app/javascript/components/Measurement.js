@@ -117,7 +117,7 @@ const Measurement = ({
             <button type="submit" className="btn btn-lg btn-primary my-5 btn-form">Edit Measurement</button>
           </form>
           <form onSubmit={handleSubmit} id="delete-form">
-            <button type="submit" className="btn btn-danger btn-form">Delete Measurement</button>
+            <button type="submit" className="btn btn-danger btn-delete">Delete Measurement</button>
           </form>
         </div>
       </div>

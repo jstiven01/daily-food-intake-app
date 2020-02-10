@@ -53,11 +53,10 @@ const userPostSignUp = (history, {
         dispatch(SignUpUserAction(response.data));
         localStorage.setItem('token', response.data.auth_token);
         history.push('/main');
-        // handleSuccessfulAuth(response.data);
       }
     })
     .catch(error => {
-      dispatch(FailureSignUpAction(error));
+      dispatch(FailureSignUpAction(error.response.data.message));
     });
 };
 
@@ -81,7 +80,7 @@ const userPostLogin = (history, {
       }
     })
     .catch(error => {
-      dispatch(FailureLoginAction(error));
+      dispatch(FailureLoginAction(error.response.data.message));
     });
 };
 
