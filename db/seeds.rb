@@ -18,25 +18,16 @@ user_example.nutrients.create!(name: "Fat", units: "grams",
     total_nutrient: 0, date_progress: Time.now)
 
 user_example.nutrients.each do |nutrient|
-    20.times do |i| 
-        Measurement.create(
-            amount: rand(2500),
-            date_intake: Faker::Date.between(from: 2.days.ago, to: Date.today) ,
+    10.times do |i| 
+        Measurement.create!(
+            amount: rand(1..20),
+            date_intake: Time.now - (10-i).days ,
             nutrient: nutrient
         )
     end 
 end
 
-user_example.nutrients.each do |nutrient|
-    20.times do |i| 
-        Progress.create(
-            total_date: rand(2500),
-            date_progress: Faker::Date.between(from: 20.days.ago, to: Date.today) ,
-            units: nutrient.units,
-            nutrient: nutrient
-        )
-    end 
-end
+
 
 
 

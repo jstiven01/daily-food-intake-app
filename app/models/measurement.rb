@@ -10,14 +10,23 @@ class Measurement < ApplicationRecord
   validates_presence_of :date_intake, :amount
 
   def update_nutrient_progress
-    # nutrient = Nutrient.find(nutrient_id)
-    sum_measurements = nutrient.measurements.where('DATE(date_intake) = ?', date_intake).sum(:amount)
-    nutrient.update_attributes(total_nutrient: sum_measurements, date_progress: date_intake)
-    progress = nutrient.progresses.find_by(date_progress: date_intake)
-    if progress
-      progress.update_attributes(total_date: sum_measurements)
+    get_measurements = nutrient.measurements.where('DATE(date_intake) >= ?', date_intake.to_time.beginning_of_day)
+    sum_measurements = 0.0
+    if get_measurements.empty?
+      sum_measurements = amount
     else
-      nutrient.progresses.create!(date_progress: date_intake, total_date: sum_measurements,
+      get_measurements.each do |msm|
+        if msm.date_intake.to_time.beginning_of_day == date_intake.to_time.beginning_of_day
+          sum_measurements += msm.amount
+        end
+      end
+    end
+    nutrient.update_attributes!(total_nutrient: sum_measurements, date_progress: date_intake.to_time.beginning_of_day)
+    progress = nutrient.progresses.where('DATE(date_progress) = ?', date_intake.to_time.beginning_of_day)
+    if !progress.empty?
+      progress[0].update_attributes!(total_date: sum_measurements)
+    else
+      nutrient.progresses.create!(date_progress: date_intake.to_time.beginning_of_day, total_date: sum_measurements,
                                   units: nutrient.units)
     end
   end
