@@ -2,11 +2,15 @@
 
 > This app is a mobile web app which helps you to track the daily food intake that you should eat. This project is based on a tracking app.
 
-![screenshot](./app_screenshot.png)
+<img src="./docs/main.png" width="250px" height="450px">
+<img src="./docs/progress.png" width="250px" height="450px">
+<img src="./docs/measurements.png" width="250px" height="450px">
+<img src="./docs/new.png" width="250px" height="450px">
 
 ## Built With
 
 - Rails API 5.2.4.1
+- Postgresql
 - React
 - HTML
 - Bootstrap
@@ -14,7 +18,8 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+Open the app in Mobile screen
+[Live Demo Link](https://fast-shelf-63763.herokuapp.com/)
 
 ## Installation
 
@@ -31,14 +36,20 @@ In this repository are the back-end and frontend which were created with the web
 ```
 cd daily-food-intake
 ```
+3. Prepare rails environment
 
-3. run rails server
+```
+bundle install --without production
+rails db:migrate
+```
+
+4. run rails server
 
 ```
 rails s
 ```
 
-4. Go to Localhost in your favorite browser
+5. Go to Localhost in your favorite browser
 
 ```
 http://localhost:3000/
