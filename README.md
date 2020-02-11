@@ -2,10 +2,9 @@
 
 > This app is a mobile web app which helps you to track the daily food intake that you should eat. This project is based on a tracking app.
 
-<img src="./docs/main.png" width="250px" height="450px">
-<img src="./docs/progress.png" width="250px" height="450px">
-<img src="./docs/measurements.png" width="250px" height="450px">
-<img src="./docs/new.png" width="250px" height="450px">
+<img src="./docs/main.png" width="250px" height="450px">  <img src="./docs/progress.png" width="250px" height="450px">
+
+<img src="./docs/measurements.png" width="250px" height="450px">  <img src="./docs/new.png" width="250px" height="450px">
 
 ## Built With
 
