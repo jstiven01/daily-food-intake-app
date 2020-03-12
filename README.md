@@ -1,4 +1,4 @@
-# Final Capstone Project: Tracking Daily Food Intake App
+# Tracking Daily Food Intake App
 
 > This app is a mobile web app which helps you to track the daily food intake that you should eat. This project is based on a tracking app.
 
