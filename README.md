@@ -1,6 +1,6 @@
 # Tracking Daily Food Intake App
 
-> This app is a mobile web app which helps you to track the daily food intake that you should eat. This project is based on a tracking app.
+> This app is a mobile web app which helps you to track the daily food intake that you should eat. This project is based on a tracking app
 
 <img src="./docs/main.png" width="250px" height="450px">  <img src="./docs/progress.png" width="250px" height="450px">
 
@@ -20,9 +20,9 @@
 Open the app in Mobile screen
 [Live Demo Link](https://fast-shelf-63763.herokuapp.com/)
 
-## Installation
+## Installation and Usage
 
-In this repository are the back-end and frontend which were created with the webpack=react flag that Rails offers.
+In this repository are the back-end and frontend which were created with the webpack=react flag that Rails offers
 
 1. Clone the project to your local directory
 
@@ -54,11 +54,16 @@ rails s
 http://localhost:3000/
 ```
 
-### Run tests
+### Automated Tests
+Get in to the folder app and run
 
 ```
 rspec
 ```
+
+## Upcoming Features
+
+To see the upcoming features check the [issues page](https://github.com/jstiven01/daily-food-intake-app/issues)
 
 ## Author
 
@@ -74,4 +79,4 @@ All the design info (color, typography, layouts) was based on the the [Bodytrack
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](lic.url) licensed
