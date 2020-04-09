@@ -54,7 +54,7 @@ rails s
 http://localhost:3000/
 ```
 
-### Automated Tests
+## Automated Tests
 Get in to the folder app and run
 
 ```
