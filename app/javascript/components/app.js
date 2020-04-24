@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { checkingIsLogged, logOutUser } from '../redux/auth/actions';
 import Home from './Home';
 import Nutrients from './Nutrients';
-import Measurements from './Measurements';
+import MeasurementsContainer from './containers/MeasurementsContainer';
 import Measurement from './Measurement';
 import NewMeasurement from './NewMeasurement';
 import Progresses from './Progresses';
@@ -43,7 +43,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/main" component={Nutrients} />
-            <Route exact path="/nutrient/:id/:nutrient/measurements" component={Measurements} />
+            <Route exact path="/nutrient/:id/:nutrient/measurements" component={MeasurementsContainer} />
             <Route exact path="/nutrient/:id/:nutrient/new/measurement" component={NewMeasurement} />
             <Route exact path="/nutrient/:idn/:nutrient/measurement/:idm" component={Measurement} />
             <Route exact path="/myProgress" component={Progresses} />

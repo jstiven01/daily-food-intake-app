@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { DateTime } from 'luxon';
 import 'react-circular-progressbar/dist/styles.css';
-import { getMeasurements } from '../redux/measurements/actions';
 
-// eslint-disable-next-line react/prop-types
-const Measurements = ({ match, measurementsData, getMeasurements }) => {
-  // eslint-disable-next-line react/prop-types
-  const { params: { id, nutrient } } = match;
+const Measurements = ({ id, nutrient, measurementsData }) => {
 
   const goalsNutrients = {
     Protein: 50,
@@ -20,10 +15,6 @@ const Measurements = ({ match, measurementsData, getMeasurements }) => {
 
 
   const goal = goalsNutrients[nutrient];
-
-  useEffect(() => {
-    getMeasurements(id);
-  }, []);
 
   const todayWithHoursZero = new Date(DateTime.local()).setHours(0, 0, 0, 0);
   const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date(DateTime.local()));
@@ -251,15 +242,8 @@ Measurements.propTypes = {
     amount: PropTypes.number,
     date_intake: PropTypes.string,
   })).isRequired,
-  getMeasurements: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  nutrient: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
-  measurementsData: state.measurements.measurements,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getMeasurements: id => dispatch(getMeasurements(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Measurements);
+export default Measurements;
