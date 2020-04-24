@@ -6,7 +6,6 @@ import { DateTime } from 'luxon';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Measurements = ({ id, nutrient, measurementsData }) => {
-
   const goalsNutrients = {
     Protein: 50,
     Fat: 65,
@@ -15,6 +14,7 @@ const Measurements = ({ id, nutrient, measurementsData }) => {
 
 
   const goal = goalsNutrients[nutrient];
+  console.log(measurementsData)
 
   const todayWithHoursZero = new Date(DateTime.local()).setHours(0, 0, 0, 0);
   const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date(DateTime.local()));
