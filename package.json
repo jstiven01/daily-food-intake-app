@@ -19,7 +19,7 @@
     "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "chat.js": "^1.0.2",
     "luxon": "^1.22.0",
     "moment-timezone": "^0.5.27",
