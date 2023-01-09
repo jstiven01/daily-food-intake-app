@@ -21,7 +21,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.4",
     "chat.js": "^1.0.2",
-    "luxon": "^1.22.0",
+    "luxon": "^2.5.2",
     "moment-timezone": "^0.5.27",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
